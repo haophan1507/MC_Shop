@@ -27,6 +27,8 @@ function Headers() {
     <Container
       fluid
       style={{
+        position: 'relative',
+        zIndex: 10,
         backgroundColor: ['/'].includes(pathname)
           ? Colors.LightGrey
           : Colors.White,
@@ -40,8 +42,8 @@ function Headers() {
           </Link>
           <Flex gap={48}>
             <Link to="/">Trang chủ</Link>
-            <Link to="/blog">Sản phẩm</Link>
-            <Link to="/product">Bài viết</Link>
+            <Link to="/product">Sản phẩm</Link>
+            <Link to="/blog">Bài viết</Link>
             <Link to="/contact">Liên hệ</Link>
           </Flex>
           <Flex gap={24}>

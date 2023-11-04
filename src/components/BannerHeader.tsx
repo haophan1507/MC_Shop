@@ -55,7 +55,7 @@ function BannerHeader() {
         backgroundColor: Colors.LightGrey,
       }}
     >
-      <Container size="xl" pt={24}>
+      <Container size="xl" pt={48}>
         <Flex justify="space-between" gap={86}>
           <Stack w="100%" pos="relative">
             <Space
