@@ -14,10 +14,11 @@ export default function App() {
   return (
     <MantineProvider theme={theme}>
       <Headers />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/product/*" element={<Product />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
