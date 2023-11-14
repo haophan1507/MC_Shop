@@ -38,9 +38,10 @@ function Headers() {
       style={{
         position: 'relative',
         zIndex: 10,
-        backgroundColor: ['/'].includes(pathname)
-          ? Colors.LightGrey
-          : Colors.White,
+        backgroundColor:
+          '/'.includes(pathname) || pathname.includes('product-detail')
+            ? Colors.LightGrey
+            : Colors.White,
       }}
     >
       <Container size="xl">

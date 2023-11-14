@@ -17,9 +17,9 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/*" element={<Blog />} />
         <Route path="/product/*" element={<Product />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact/*" element={<Contact />} />
       </Routes>
       <Footer />
     </MantineProvider>

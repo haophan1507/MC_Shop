@@ -8,7 +8,7 @@ import {
   Space,
   Stack,
 } from '@mantine/core';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
 
@@ -91,7 +91,7 @@ const ImageMan = [
 ];
 
 function ListProduct() {
-  let { name } = useParams();
+  const { name } = useParams();
 
   return (
     <Container size="xl">
@@ -167,6 +167,8 @@ function ListProduct() {
 
 const ProductItem = ({ item }: { item: any }) => {
   const { hovered, ref } = useHover();
+  const { name } = useParams();
+  const navigate = useNavigate();
 
   return (
     <Space
@@ -177,6 +179,7 @@ const ProductItem = ({ item }: { item: any }) => {
         cursor: 'pointer',
       }}
       ref={ref}
+      onClick={() => navigate(`/product/${name}/product-detail`)}
     >
       {hovered ? (
         <Center
