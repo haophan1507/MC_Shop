@@ -13,8 +13,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
 
-import image1 from '../../assets/images/product-man/Rectangle 3244.png';
-import image2 from '../../assets/images/product-woman/Rectangle 3244.png';
 import image3 from '../../assets/images/product-woman/Rectangle 3245-1.png';
 import image4 from '../../assets/images/product-woman/Rectangle 3245-2.png';
 import image5 from '../../assets/images/product-woman/Rectangle 3245-3.png';

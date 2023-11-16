@@ -11,7 +11,6 @@ import {
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
-import { IconMinus, IconPlus } from '@tabler/icons-react';
 
 import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
 import image2 from '../../assets/images/homepage/image 23-1.png';
