@@ -9,6 +9,7 @@ import Contact from './layouts/Contact';
 import Product from './layouts/Product';
 import Headers from './components/Headers';
 import Footer from './components/Footer';
+import Auth from './layouts/Auth';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/blog/*" element={<Blog />} />
         <Route path="/product/*" element={<Product />} />
         <Route path="/contact/*" element={<Contact />} />
+        <Route path="/auth/*" element={<Auth />} />
       </Routes>
       <Footer />
     </MantineProvider>
