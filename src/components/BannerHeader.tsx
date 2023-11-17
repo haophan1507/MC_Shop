@@ -23,6 +23,7 @@ import image7 from '../assets/images/homepage/image 24-1.png';
 import image8 from '../assets/images/homepage/image 22-1.png';
 import image9 from '../assets/images/homepage/image 23-1.png';
 import image10 from '../assets/images/homepage/image 21-1.png';
+import { useNavigate } from 'react-router-dom';
 
 const MODE_BANNER = [
   {
@@ -47,6 +48,7 @@ const MODE_BANNER = [
 
 function BannerHeader() {
   const [modeBanner, setModeBanner] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <Container
@@ -111,6 +113,7 @@ function BannerHeader() {
               radius="xs"
               w={220}
               rightSection={<IconChevronRight size={20} />}
+              onClick={() => navigate('/blog/blog-detail')}
             >
               <Typography.Body1 c={Colors.White}>
                 Khám phá bộ sưu tập

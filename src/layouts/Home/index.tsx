@@ -16,7 +16,7 @@ import {
   IconChevronRight,
   IconShoppingBagPlus,
 } from '@tabler/icons-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import image1 from '../../assets/images/homepage/Image.png';
 import image2 from '../../assets/images/homepage/Image-1.png';
 import image3 from '../../assets/images/homepage/Image-2.png';
@@ -52,6 +52,8 @@ const DATA_BLOG = [
 ];
 
 function index() {
+  const navigate = useNavigate();
+
   return (
     <>
       <BannerHeader />
@@ -108,7 +110,11 @@ function index() {
           <Flex gap={32}>
             {DATA_BLOG.map((item, index) => {
               return (
-                <Stack key={index} style={{ flex: 1 }}>
+                <Stack
+                  key={index}
+                  style={{ flex: 1, cursor: 'pointer' }}
+                  onClick={() => navigate('/blog/blog-detail')}
+                >
                   <AspectRatio ratio={325 / 360}>
                     <Image src={item.image} w="100%" h="100%" />
                   </AspectRatio>
@@ -126,7 +132,10 @@ function index() {
                   </Flex>
                   <Typography.HeadLine4>{item.title}</Typography.HeadLine4>
                   <Typography.Body1>{item.description}</Typography.Body1>
-                  <Link to={'/'} style={{ textDecoration: 'none' }}>
+                  <Link
+                    to={'/blog/blog-detail'}
+                    style={{ textDecoration: 'none' }}
+                  >
                     <Flex align="center">
                       <Typography.Body1>Đọc thêm </Typography.Body1>
                       <IconChevronRight size={20} />

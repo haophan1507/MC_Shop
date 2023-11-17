@@ -9,9 +9,11 @@ import {
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
 import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from '@mantine/hooks';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [_value, setValue] = useLocalStorage({ key: 'user' });
 
   return (
     <Container size="xl">
@@ -45,7 +47,10 @@ const Login = () => {
             color={Colors.Brown}
             radius="xs"
             w="100%"
-            onClick={() => navigate('/')}
+            onClick={() => {
+              setValue('user');
+              navigate('/');
+            }}
           >
             <Typography.Body1 c={Colors.White}>Đăng nhập</Typography.Body1>
           </Button>

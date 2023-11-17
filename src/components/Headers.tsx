@@ -1,19 +1,29 @@
 import {
+  Collapse,
   Container,
   Divider,
+  Drawer,
   Flex,
   HoverCard,
   Image,
   Stack,
   UnstyledButton,
+  em,
 } from '@mantine/core';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { IconSearch, IconShoppingBag, IconUser } from '@tabler/icons-react';
+import {
+  IconChevronDown,
+  IconMenu2,
+  IconSearch,
+  IconShoppingBag,
+  IconUser,
+} from '@tabler/icons-react';
 import styled from '@emotion/styled';
 import { useLocation } from 'react-router';
 import Colors from '../common/components/Colors';
 import logo from '../assets/images/logo_MC.png';
 import { Typography } from '../common/components/Typography';
+import { useDisclosure, useLocalStorage, useMediaQuery } from '@mantine/hooks';
 
 const Link = styled(NavLink)`
   text-decoration: none;
@@ -41,6 +51,11 @@ const LinkMenu = styled(NavLink)`
 function Headers() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const [opened, { open, close }] = useDisclosure(false);
+  const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
+  const [value, setValue] = useLocalStorage({ key: 'user' });
+
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   return (
     <Container
@@ -74,42 +89,108 @@ function Headers() {
               <Image src={logo} w={84} h={48} />
             </Link>
 
-            <Flex gap={48}>
-              <Link to="/">Trang chủ</Link>
-              <HoverCard width={250} shadow="md">
-                <HoverCard.Target>
-                  <Link
-                    to="/product/Tất cả các túi sách Nữ"
-                    className={`${
-                      pathname.includes('/product') ? 'active' : ''
-                    }`}
-                  >
-                    Sản phẩm
-                  </Link>
-                </HoverCard.Target>
-                <HoverCard.Dropdown>
-                  <Stack>
-                    <LinkMenu to="/product/Tất cả các túi sách Nữ">
+            {!isMobile && (
+              <Flex gap={48}>
+                <Link to="/">Trang chủ</Link>
+                <HoverCard width={250} shadow="md">
+                  <HoverCard.Target>
+                    <Link
+                      to="/product/Tất cả các túi sách Nữ"
+                      className={`${
+                        pathname.includes('/product') ? 'active' : ''
+                      }`}
+                    >
+                      Sản phẩm
+                    </Link>
+                  </HoverCard.Target>
+                  <HoverCard.Dropdown>
+                    <Stack>
+                      <LinkMenu to="/product/Tất cả các túi sách Nữ">
+                        Tất cả các túi sách Nữ
+                      </LinkMenu>
+                      <LinkMenu to="/product/Tất cả các túi sách Nam">
+                        Tất cả các túi sách Nam
+                      </LinkMenu>
+                      <LinkMenu to="/product/Các túi ví">Các túi ví</LinkMenu>
+                      <LinkMenu to="/product/Túi Crossbody">
+                        Túi Crossbody
+                      </LinkMenu>
+                      <LinkMenu to="/product/Túi Mini">Túi Mini</LinkMenu>
+                      <LinkMenu to="/product/Túi xách tay trên">
+                        Túi xách tay trên
+                      </LinkMenu>
+                      <LinkMenu to="/product/Túi đeo vai">Túi đeo vai</LinkMenu>
+                    </Stack>
+                  </HoverCard.Dropdown>
+                </HoverCard>
+                <Link to="/blog">Bài viết</Link>
+                <Link to="/contact">Liên hệ</Link>
+              </Flex>
+            )}
+
+            <Drawer size="sm" position="right" opened={opened} onClose={close}>
+              <Stack>
+                <UnstyledButton onClick={() => navigate('/')}>
+                  Trang chủ
+                </UnstyledButton>
+                <UnstyledButton onClick={toggleLinks}>
+                  <Flex align="center">
+                    Sản phẩm <IconChevronDown />
+                  </Flex>
+                </UnstyledButton>
+                <Collapse in={linksOpened}>
+                  <Stack ml={24}>
+                    <UnstyledButton
+                      onClick={() =>
+                        navigate('/product/Tất cả các túi sách Nữ')
+                      }
+                    >
                       Tất cả các túi sách Nữ
-                    </LinkMenu>
-                    <LinkMenu to="/product/Tất cả các túi sách Nam">
+                    </UnstyledButton>
+                    <UnstyledButton
+                      onClick={() =>
+                        navigate('/product/Tất cả các túi sách Nam')
+                      }
+                    >
                       Tất cả các túi sách Nam
-                    </LinkMenu>
-                    <LinkMenu to="/product/Các túi ví">Các túi ví</LinkMenu>
-                    <LinkMenu to="/product/Túi Crossbody">
+                    </UnstyledButton>
+                    <UnstyledButton
+                      onClick={() => navigate('/product/Các túi ví')}
+                    >
+                      Các túi ví
+                    </UnstyledButton>
+                    <UnstyledButton
+                      onClick={() => navigate('/product/Túi Crossbody')}
+                    >
                       Túi Crossbody
-                    </LinkMenu>
-                    <LinkMenu to="/product/Túi Mini">Túi Mini</LinkMenu>
-                    <LinkMenu to="/product/Túi xách tay trên">
+                    </UnstyledButton>
+                    <UnstyledButton
+                      onClick={() => navigate('/product/Túi Mini')}
+                    >
+                      Túi Mini
+                    </UnstyledButton>
+                    <UnstyledButton
+                      onClick={() => navigate('/product/Túi xách tay trên')}
+                    >
                       Túi xách tay trên
-                    </LinkMenu>
-                    <LinkMenu to="/product/Túi đeo vai">Túi đeo vai</LinkMenu>
+                    </UnstyledButton>
+                    <UnstyledButton
+                      onClick={() => navigate('/product/Túi đeo vai')}
+                    >
+                      Túi đeo vai
+                    </UnstyledButton>
                   </Stack>
-                </HoverCard.Dropdown>
-              </HoverCard>
-              <Link to="/blog">Bài viết</Link>
-              <Link to="/contact">Liên hệ</Link>
-            </Flex>
+                </Collapse>
+                <UnstyledButton onClick={() => navigate('/blog')}>
+                  Bài viết
+                </UnstyledButton>
+
+                <UnstyledButton onClick={() => navigate('/contact')}>
+                  Liên hệ
+                </UnstyledButton>
+              </Stack>
+            </Drawer>
+
             <Flex gap={24}>
               <UnstyledButton onClick={() => navigate('/product/search')}>
                 <IconSearch />
@@ -119,9 +200,42 @@ function Headers() {
                 <IconShoppingBag />
               </UnstyledButton>
 
-              <UnstyledButton onClick={() => navigate('/auth/login')}>
-                <IconUser />
-              </UnstyledButton>
+              {value ? (
+                <HoverCard width={280} shadow="md">
+                  <HoverCard.Target>
+                    <UnstyledButton>
+                      <IconUser />
+                    </UnstyledButton>
+                  </HoverCard.Target>
+                  <HoverCard.Dropdown>
+                    <Stack>
+                      <LinkMenu to="/auth/settings">Cài đặt tài khoản</LinkMenu>
+                      <LinkMenu to="/auth/my-order">Đơn hàng của tôi</LinkMenu>
+
+                      <LinkMenu to="/auth/address">Địa chỉ</LinkMenu>
+                      <LinkMenu to="/auth/change-password">
+                        Đổi mật khẩu
+                      </LinkMenu>
+                      <LinkMenu to="/auth/favorite-product">
+                        Sản phẩm yêu thích
+                      </LinkMenu>
+                      <LinkMenu to="/" onClick={() => setValue('')}>
+                        Đăng xuất
+                      </LinkMenu>
+                    </Stack>
+                  </HoverCard.Dropdown>
+                </HoverCard>
+              ) : (
+                <UnstyledButton onClick={() => navigate('/auth/login')}>
+                  <IconUser />
+                </UnstyledButton>
+              )}
+
+              {isMobile && (
+                <UnstyledButton onClick={open}>
+                  <IconMenu2 />
+                </UnstyledButton>
+              )}
             </Flex>
           </Flex>
         )}

@@ -11,11 +11,11 @@ import {
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
+import { useNavigate } from 'react-router-dom';
 
 import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
 import image2 from '../../assets/images/homepage/image 23-1.png';
 import image3 from '../../assets/images/homepage/image 21-1.png';
-import { useNavigate } from 'react-router-dom';
 
 function Success() {
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ function Success() {
       </Grid>
 
       <Container size="lg">
-        <Typography.HeadLine5 fw="bold" tt="uppercase">
+        <Typography.HeadLine5 fw="bold" tt="uppercase" mt={50}>
           Chi tiết ĐƠN HÀNG
         </Typography.HeadLine5>
         <Flex gap={12} align="center" justify="space-between" w="100%" px={32}>

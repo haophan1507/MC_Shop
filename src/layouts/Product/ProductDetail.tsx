@@ -51,6 +51,7 @@ const listImage = [image1, image2, image3, image4, image5, image6];
 
 const ProductDetail = () => {
   const [embla, setEmbla] = useState<Embla | null>(null);
+  const [number, setNumber] = useState(1);
 
   const handleScroll = useCallback(() => {
     if (!embla) return;
@@ -142,9 +143,21 @@ const ProductDetail = () => {
               <Flex gap={10} align="center">
                 <Typography.Body1>Số lượng:</Typography.Body1>
                 <Flex align="center" gap={10}>
-                  <IconMinus />
-                  <Typography.HeadLine4>1</Typography.HeadLine4>
-                  <IconPlus />
+                  <IconMinus
+                    onClick={() =>
+                      setNumber((prev) => (prev > 0 ? prev - 1 : 0))
+                    }
+                    style={{
+                      cursor: 'pointer',
+                    }}
+                  />
+                  <Typography.HeadLine4>{number}</Typography.HeadLine4>
+                  <IconPlus
+                    onClick={() => setNumber((prev) => prev + 1)}
+                    style={{
+                      cursor: 'pointer',
+                    }}
+                  />
                 </Flex>
               </Flex>
 
