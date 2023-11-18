@@ -526,7 +526,7 @@ const ProductDetail = () => {
                       style={{
                         alignSelf: 'center',
                       }}
-                      onClick={(e) => {
+                      onClick={() => {
                         notifications.show({
                           icon: (
                             <IconCheck
