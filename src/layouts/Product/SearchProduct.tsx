@@ -3,11 +3,14 @@ import {
   Center,
   Container,
   Flex,
+  Grid,
   HoverCard,
   Image,
   Input,
   Space,
   Stack,
+  em,
+  rem,
 } from '@mantine/core';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Typography } from '../../common/components/Typography';
@@ -45,12 +48,14 @@ import image30 from '../../assets/images/product-man/Rectangle 3245-19.png';
 import image31 from '../../assets/images/product-man/Rectangle 3245.png';
 
 import {
+  IconCheck,
   IconChevronDown,
   IconHeart,
   IconSearch,
   IconShoppingBagPlus,
 } from '@tabler/icons-react';
-import { useHover } from '@mantine/hooks';
+import { useHover, useMediaQuery } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
 
 const ImageWoman = [
   image3,
@@ -92,10 +97,11 @@ const ImageMan = [
 
 function SearchProduct() {
   const { name } = useParams();
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   return (
     <Container size="xl">
-      <Typography.HeadLine2 ta="center" mt={80}>
+      <Typography.HeadLine2 ta="center" mt={isMobile ? 24 : 80}>
         KẾT QUẢ TÌM KIẾM
       </Typography.HeadLine2>
       <Center>
@@ -110,8 +116,16 @@ function SearchProduct() {
         />
       </Center>
 
-      <Flex justify="space-between" mt={24} mb={32}>
+      {isMobile && (
         <Typography.Body1 fs="italic">Có 60 kết quả tìm kiếm</Typography.Body1>
+      )}
+
+      <Flex justify="space-between" mt={24} mb={32}>
+        {!isMobile && (
+          <Typography.Body1 fs="italic">
+            Có 60 kết quả tìm kiếm
+          </Typography.Body1>
+        )}
 
         <Flex gap={24}>
           <HoverCard shadow="md">
@@ -158,15 +172,19 @@ function SearchProduct() {
         </Flex>
       </Flex>
 
-      <Flex wrap="wrap">
+      <Grid gutter={0}>
         {name === 'Tất cả các túi sách Nữ'
           ? ImageWoman.map((item, index) => (
-              <ProductItem key={index} item={item} />
+              <Grid.Col span={isMobile ? 6 : 3}>
+                <ProductItem key={index} item={item} />
+              </Grid.Col>
             ))
           : ImageMan.map((item, index) => (
-              <ProductItem key={index} item={item} />
+              <Grid.Col span={isMobile ? 6 : 3}>
+                <ProductItem key={index} item={item} />
+              </Grid.Col>
             ))}
-      </Flex>
+      </Grid>
 
       <Center mt={40} mb={80}>
         <Button variant="filled" bg={Colors.Brown} size="lg" radius="xs">
@@ -184,7 +202,6 @@ const ProductItem = ({ item }: { item: any }) => {
 
   return (
     <Space
-      w="25%"
       pos="relative"
       style={{
         border: '1px solid #CBCBCB',
@@ -217,6 +234,22 @@ const ProductItem = ({ item }: { item: any }) => {
               maw={200}
               style={{
                 alignSelf: 'center',
+              }}
+              onClick={() => {
+                notifications.show({
+                  icon: (
+                    <IconCheck style={{ width: rem(20), height: rem(20) }} />
+                  ),
+                  color: 'teal',
+                  autoClose: 1000,
+                  message: (
+                    <Stack my={16}>
+                      <Typography.HeadLine5>
+                        Sản phẩm đã được thêm vào Giỏ hàng
+                      </Typography.HeadLine5>
+                    </Stack>
+                  ),
+                });
               }}
             >
               <Typography.Body2 c={Colors.White}>

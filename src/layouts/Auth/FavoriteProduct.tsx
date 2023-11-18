@@ -1,4 +1,12 @@
-import { Center, Container, Divider, Grid, Space, Image } from '@mantine/core';
+import {
+  Center,
+  Container,
+  Divider,
+  Grid,
+  Space,
+  Image,
+  em,
+} from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 
 import image1 from '../../assets/images/product-woman/Rectangle 3245-1.png';
@@ -12,6 +20,7 @@ import image8 from '../../assets/images/product-woman/Rectangle 3245-12.png';
 import { IconHeart } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 import Colors from '../../common/components/Colors';
+import { useMediaQuery } from '@mantine/hooks';
 
 const favorites = [
   image1,
@@ -27,6 +36,8 @@ const favorites = [
 function FavoriteProduct() {
   const navigate = useNavigate();
 
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
+
   return (
     <Container size="xl">
       <Typography.HeadLine2 mt={64} ta="center">
@@ -37,7 +48,7 @@ function FavoriteProduct() {
       <Grid gutter={0} mt={50} mb={120}>
         {favorites.map((item, index) => {
           return (
-            <Grid.Col span={3} key={index}>
+            <Grid.Col span={isMobile ? 6 : 3} key={index}>
               <Space
                 pos="relative"
                 style={{
@@ -56,7 +67,7 @@ function FavoriteProduct() {
                     style={{
                       position: 'absolute',
                       top: 24,
-                      right: 48,
+                      right: isMobile ? 24 : 48,
                     }}
                   />
                 </Center>

@@ -15,6 +15,7 @@ import {
   Stack,
   TextInput,
   Textarea,
+  em,
 } from '@mantine/core';
 import Colors from '../../common/components/Colors';
 import { Typography } from '../../common/components/Typography';
@@ -22,10 +23,13 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
+import { useMediaQuery } from '@mantine/hooks';
 
 function Payment() {
   const navigate = useNavigate();
   const [value, setValue] = useState('radio-1');
+
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   return (
     <Container size="xl">
@@ -37,7 +41,7 @@ function Payment() {
       </Flex>
 
       <Grid mb={140}>
-        <Grid.Col span={6}>
+        <Grid.Col span={isMobile ? 12 : 6}>
           <Stack gap={20}>
             <Typography.HeadLine4 tt="uppercase">
               Chi tiết thanh toán
@@ -75,7 +79,7 @@ function Payment() {
 
         <Grid.Col span={1} />
 
-        <Grid.Col span={5}>
+        <Grid.Col span={isMobile ? 12 : 6}>
           <Box
             py={32}
             px={32}

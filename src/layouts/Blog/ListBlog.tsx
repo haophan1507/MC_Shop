@@ -8,6 +8,8 @@ import {
   Input,
   NavLink,
   Stack,
+  Tabs,
+  em,
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
@@ -21,6 +23,7 @@ import image4 from '../../assets/images/blog/Image-1.png';
 import image5 from '../../assets/images/blog/Image-2.png';
 import image6 from '../../assets/images/blog/Image-3.png';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from '@mantine/hooks';
 
 const navLink = [
   { label: 'Xem tất cả' },
@@ -31,7 +34,7 @@ const navLink = [
   { label: 'Túi đeo vai' },
   { label: 'Túi Crossbody' },
   { label: 'Túi mini' },
-  { label: 'Hướng dẫn phối đồ ' },
+  { label: 'Hướng dẫn phối đồ' },
 ];
 
 const list1 = [
@@ -100,6 +103,8 @@ function ListBlog() {
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
 
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
+
   const items = navLink.map((item, index) => (
     <NavLink
       key={item.label}
@@ -115,8 +120,20 @@ function ListBlog() {
     <Container size="xl">
       <Image src={image1} />
 
+      {isMobile && (
+        <Tabs defaultValue="1" mt={24}>
+          <Tabs.List>
+            <Tabs.Tab value="1">Xem tất cả</Tabs.Tab>
+            <Tabs.Tab value="2">Bộ sưu tập</Tabs.Tab>
+            <Tabs.Tab value="3">Tin tức thời trang</Tabs.Tab>
+            <Tabs.Tab value="4">Túi đeo vai</Tabs.Tab>
+            <Tabs.Tab value="5">Hướng dẫn phối đồ</Tabs.Tab>
+          </Tabs.List>
+        </Tabs>
+      )}
+
       <Flex mt={36} gap={64}>
-        <Box w={300}>{items}</Box>
+        {!isMobile && <Box w={300}>{items}</Box>}
 
         <Stack w="100%">
           <Stack w="100%">
@@ -192,18 +209,15 @@ function ListBlog() {
         </Stack>
       </Flex>
 
-      <Flex justify="space-between" my={60}>
-        <Stack maw={400}>
-          <Typography.HeadLine3>
+      {isMobile ? (
+        <Stack mb={60}>
+          <Typography.HeadLine4>
             Đăng ký cho bản tin của chúng tôi
-          </Typography.HeadLine3>
+          </Typography.HeadLine4>
           <Typography.Body1>
             Hãy tham gia bản tin điện tử của chúng tôi để nhận thông tin về các
             thông tin mới nhất.
           </Typography.Body1>
-        </Stack>
-
-        <Stack maw={480}>
           <Flex gap={16}>
             <Input
               size="md"
@@ -221,7 +235,43 @@ function ListBlog() {
             Điều khoản và Điều kiện của chúng tôi.
           </Typography.Body1>
         </Stack>
-      </Flex>
+      ) : (
+        <Flex justify="space-between" my={60}>
+          <Stack maw={400}>
+            <Typography.HeadLine3>
+              Đăng ký cho bản tin của chúng tôi
+            </Typography.HeadLine3>
+            <Typography.Body1>
+              Hãy tham gia bản tin điện tử của chúng tôi để nhận thông tin về
+              các thông tin mới nhất.
+            </Typography.Body1>
+          </Stack>
+
+          <Stack maw={480}>
+            <Flex gap={16}>
+              <Input
+                size="md"
+                style={{
+                  flex: 1,
+                }}
+                placeholder="Nhập email của bạn"
+              />
+              <Button
+                variant="filled"
+                size="md"
+                color={Colors.Brown}
+                radius="xs"
+              >
+                <Typography.Body1 c={Colors.White}>Đăng ký</Typography.Body1>
+              </Button>
+            </Flex>
+            <Typography.Body1>
+              Bằng cách nhấp vào Đăng ký, bạn đang xác nhận rằng bạn đồng ý với
+              Điều khoản và Điều kiện của chúng tôi.
+            </Typography.Body1>
+          </Stack>
+        </Flex>
+      )}
 
       <Stack mb={64}>
         <Typography.HeadLine2>Bài đăng mới nhất</Typography.HeadLine2>
@@ -229,43 +279,80 @@ function ListBlog() {
           Cùng xem lại các blog mà MC đã cho ra mắt gần đây.
         </Typography.Body1>
 
-        <Flex mt={50} w="100%" wrap="wrap" justify="space-between">
-          {list2.map((item, index) => {
-            return (
-              <Flex key={item.title + index} w="45%" mb={64} gap={32}>
-                <Box style={{ flex: 1 }}>
+        {isMobile ? (
+          <Stack gap={24}>
+            {list2.map((item, index) => {
+              return (
+                <Stack key={item.title + index}>
                   <Image src={item.image} w="100%" />
-                </Box>
+                  <Stack style={{ flex: 1 }}>
+                    <Flex>
+                      {item.tags.map((tag, index) => (
+                        <Badge
+                          key={`badge-${index}`}
+                          color={Colors.BaseColor}
+                          radius="xs"
+                        >
+                          <Typography.Body2>{tag}</Typography.Body2>
+                        </Badge>
+                      ))}
+                    </Flex>
+                    <Typography.HeadLine4>{item.title}</Typography.HeadLine4>
+                    <Typography.Body1>{item.description}</Typography.Body1>
 
-                <Stack style={{ flex: 1 }}>
-                  <Flex>
-                    {item.tags.map((tag, index) => (
-                      <Badge
-                        key={`badge-${index}`}
-                        color={Colors.BaseColor}
-                        radius="xs"
-                      >
-                        <Typography.Body2>{tag}</Typography.Body2>
-                      </Badge>
-                    ))}
-                  </Flex>
-                  <Typography.HeadLine4>{item.title}</Typography.HeadLine4>
-                  <Typography.Body1>{item.description}</Typography.Body1>
-
-                  <Flex
-                    onClick={() => navigate('/blog/blog-detail')}
-                    style={{
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <Typography.Body1>Đọc thêm</Typography.Body1>
-                    <IconChevronRight />
-                  </Flex>
+                    <Flex
+                      onClick={() => navigate('/blog/blog-detail')}
+                      style={{
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Typography.Body1>Đọc thêm</Typography.Body1>
+                      <IconChevronRight />
+                    </Flex>
+                  </Stack>
                 </Stack>
-              </Flex>
-            );
-          })}
-        </Flex>
+              );
+            })}
+          </Stack>
+        ) : (
+          <Flex mt={50} w="100%" wrap="wrap" justify="space-between">
+            {list2.map((item, index) => {
+              return (
+                <Flex key={item.title + index} w="45%" mb={64} gap={32}>
+                  <Box style={{ flex: 1 }}>
+                    <Image src={item.image} w="100%" />
+                  </Box>
+
+                  <Stack style={{ flex: 1 }}>
+                    <Flex>
+                      {item.tags.map((tag, index) => (
+                        <Badge
+                          key={`badge-${index}`}
+                          color={Colors.BaseColor}
+                          radius="xs"
+                        >
+                          <Typography.Body2>{tag}</Typography.Body2>
+                        </Badge>
+                      ))}
+                    </Flex>
+                    <Typography.HeadLine4>{item.title}</Typography.HeadLine4>
+                    <Typography.Body1>{item.description}</Typography.Body1>
+
+                    <Flex
+                      onClick={() => navigate('/blog/blog-detail')}
+                      style={{
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <Typography.Body1>Đọc thêm</Typography.Body1>
+                      <IconChevronRight />
+                    </Flex>
+                  </Stack>
+                </Flex>
+              );
+            })}
+          </Flex>
+        )}
       </Stack>
     </Container>
   );

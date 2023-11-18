@@ -9,12 +9,15 @@ import {
   Input,
   NavLink,
   Stack,
+  Tabs,
   Textarea,
+  em,
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import { useState } from 'react';
 import Colors from '../../common/components/Colors';
 import { IconMail, IconMapPin, IconPhone } from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 
 const navLink = [
   { label: 'Tài khoản' },
@@ -58,6 +61,7 @@ const list = [
 
 function index() {
   const [active, setActive] = useState(0);
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   const items = navLink.map((item, index) => (
     <NavLink
@@ -83,18 +87,34 @@ function index() {
 
   return (
     <Container size="xl">
-      <Typography.HeadLine2 ta="center" mt={60}>
+      <Typography.HeadLine2 ta="center" mt={isMobile ? 24 : 60}>
         - FAQs -
       </Typography.HeadLine2>
-      <Typography.HeadLine5 ta="center" mb={50}>
+      <Typography.HeadLine5 ta="center" mb={isMobile ? 24 : 50}>
         Giải đáp các câu hỏi thắc mắc thường gặp của khách hàng
       </Typography.HeadLine5>
 
+      {isMobile && (
+        <Tabs defaultValue="1" mb={24}>
+          <Tabs.List>
+            <Tabs.Tab value="1">Tài khoản</Tabs.Tab>
+            <Tabs.Tab value="2">Đơn hàng & Thanh toán</Tabs.Tab>
+            <Tabs.Tab value="3">Trả hàng & Hoàn tiền</Tabs.Tab>
+            <Tabs.Tab value="4">Các chính sách khác</Tabs.Tab>
+          </Tabs.List>
+        </Tabs>
+      )}
+
       <Flex gap={64}>
-        <Stack>
-          <Typography.HeadLine4 mb={24}>Danh mục câu hỏi</Typography.HeadLine4>
-          <Box w={250}>{items}</Box>
-        </Stack>
+        {!isMobile && (
+          <Stack>
+            <Typography.HeadLine4 mb={24}>
+              Danh mục câu hỏi
+            </Typography.HeadLine4>
+            <Box w={250}>{items}</Box>
+          </Stack>
+        )}
+
         <Stack w="100%">
           <Accordion defaultValue="Tại sao tôi không thể đăng nhập được vào tài khoản của mình ?">
             {itemList}
@@ -102,7 +122,7 @@ function index() {
         </Stack>
       </Flex>
 
-      <Typography.HeadLine2 ta="center" mt={140}>
+      <Typography.HeadLine2 ta="center" mt={isMobile ? 60 : 140}>
         - LIÊN HỆ -
       </Typography.HeadLine2>
       <Center>
@@ -113,8 +133,8 @@ function index() {
         </Typography.HeadLine5>
       </Center>
 
-      <Grid mt={48} mb={120} gutter={80}>
-        <Grid.Col span={7}>
+      <Grid mt={48} mb={120} gutter={isMobile ? 40 : 80}>
+        <Grid.Col span={isMobile ? 12 : 7}>
           <Stack gap={24}>
             <Box>
               <Typography.Body1 mb={8}>Tên</Typography.Body1>
@@ -140,8 +160,8 @@ function index() {
           </Stack>
         </Grid.Col>
 
-        <Grid.Col span={5}>
-          <Stack gap={40}>
+        <Grid.Col span={isMobile ? 12 : 5}>
+          <Stack gap={isMobile ? 12 : 40}>
             <Box>
               <IconMail />
               <Typography.HeadLine5 fw="bold" mt={16} mb={8}>

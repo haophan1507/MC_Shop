@@ -4,19 +4,26 @@ import {
   Button,
   Container,
   Flex,
+  Grid,
   Image,
   Space,
   Stack,
+  em,
+  rem,
 } from '@mantine/core';
 import BannerHeader from '../../components/BannerHeader';
 import Colors from '../../common/components/Colors';
 import { Typography } from '../../common/components/Typography';
 import {
+  IconCheck,
   IconChevronLeft,
   IconChevronRight,
   IconShoppingBagPlus,
 } from '@tabler/icons-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useMediaQuery } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
+
 import image1 from '../../assets/images/homepage/Image.png';
 import image2 from '../../assets/images/homepage/Image-1.png';
 import image3 from '../../assets/images/homepage/Image-2.png';
@@ -53,6 +60,7 @@ const DATA_BLOG = [
 
 function index() {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   return (
     <>
@@ -62,10 +70,17 @@ function index() {
           <Typography.HeadLine2 ta="center">
             - BÁN CHẠY NHẤT -
           </Typography.HeadLine2>
-          <Flex gap={36}>
+          {isMobile && (
             <Space style={{ flex: 1 }}>
               <Image src={image1} w="100%" />
             </Space>
+          )}
+          <Flex gap={36}>
+            {!isMobile && (
+              <Space style={{ flex: 1 }}>
+                <Image src={image1} w="100%" />
+              </Space>
+            )}
 
             <Stack style={{ flex: 1 }}>
               <Typography.HeadLine4>LV ON THE GO PM</Typography.HeadLine4>
@@ -83,6 +98,22 @@ function index() {
                 radius="xs"
                 w={210}
                 rightSection={<IconShoppingBagPlus size={20} />}
+                onClick={() => {
+                  notifications.show({
+                    icon: (
+                      <IconCheck style={{ width: rem(20), height: rem(20) }} />
+                    ),
+                    color: 'teal',
+                    autoClose: 1000,
+                    message: (
+                      <Stack my={16}>
+                        <Typography.HeadLine5>
+                          Sản phẩm đã được thêm vào Giỏ hàng
+                        </Typography.HeadLine5>
+                      </Stack>
+                    ),
+                  });
+                }}
               >
                 <Typography.Body1 c={Colors.White}>
                   Thêm vào giỏ hàng
@@ -107,110 +138,168 @@ function index() {
 
         <Stack gap={50} mt={120}>
           <Typography.HeadLine2 ta="center">- BÀI VIẾT -</Typography.HeadLine2>
-          <Flex gap={32}>
+          <Grid gutter={32}>
             {DATA_BLOG.map((item, index) => {
               return (
-                <Stack
-                  key={index}
-                  style={{ flex: 1, cursor: 'pointer' }}
-                  onClick={() => navigate('/blog/blog-detail')}
-                >
-                  <AspectRatio ratio={325 / 360}>
-                    <Image src={item.image} w="100%" h="100%" />
-                  </AspectRatio>
-
-                  <Flex gap={16} mt={24} mb={16}>
-                    {item.tags.map((tag, index) => (
-                      <Badge
-                        key={`badge-${index}`}
-                        color={Colors.BaseColor}
-                        radius="xs"
-                      >
-                        <Typography.Body2>{tag}</Typography.Body2>
-                      </Badge>
-                    ))}
-                  </Flex>
-                  <Typography.HeadLine4>{item.title}</Typography.HeadLine4>
-                  <Typography.Body1>{item.description}</Typography.Body1>
-                  <Link
-                    to={'/blog/blog-detail'}
-                    style={{ textDecoration: 'none' }}
+                <Grid.Col span={isMobile ? 12 : 4} key={item.title}>
+                  <Stack
+                    key={index}
+                    style={{ flex: 1, cursor: 'pointer' }}
+                    onClick={() => navigate('/blog/blog-detail')}
                   >
-                    <Flex align="center">
-                      <Typography.Body1>Đọc thêm </Typography.Body1>
-                      <IconChevronRight size={20} />
+                    <AspectRatio ratio={325 / 360}>
+                      <Image src={item.image} w="100%" h="100%" />
+                    </AspectRatio>
+
+                    <Flex gap={16} mt={24} mb={16}>
+                      {item.tags.map((tag, index) => (
+                        <Badge
+                          key={`badge-${index}`}
+                          color={Colors.BaseColor}
+                          radius="xs"
+                        >
+                          <Typography.Body2>{tag}</Typography.Body2>
+                        </Badge>
+                      ))}
                     </Flex>
-                  </Link>
-                </Stack>
+                    <Typography.HeadLine4>{item.title}</Typography.HeadLine4>
+                    <Typography.Body1>{item.description}</Typography.Body1>
+                    <Link
+                      to={'/blog/blog-detail'}
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <Flex align="center">
+                        <Typography.Body1>Đọc thêm </Typography.Body1>
+                        <IconChevronRight size={20} />
+                      </Flex>
+                    </Link>
+                  </Stack>
+                </Grid.Col>
               );
             })}
-          </Flex>
+          </Grid>
         </Stack>
 
         <Stack gap={50} mt={120}>
           <Typography.HeadLine2 ta="center">
             - VỀ CỬA HÀNG MC -
           </Typography.HeadLine2>
-          <Flex gap={50}>
-            <Stack style={{ flex: 6 }}>
+          {isMobile ? (
+            <Stack>
               <Image src={image7} w="100%" />
-              <Typography.TextDescription mt={50}>
+              <Typography.TextDescription>
                 Các thương hiệu quốc tế được phân phối bởi MC shop bao gồm:
                 Gucci, Efora, Louis Vuitton, Coco Chanel, Jemma và nhiều thương
                 hiệu khác.
               </Typography.TextDescription>
-            </Stack>
-            <Stack style={{ flex: 4 }}>
-              <Typography.TextDescription my={20}>
+              <Typography.TextDescription my={12}>
                 MC shop được định hướng như một mạng lưới hàng đồ da cao cấp của
                 Euro-Asia Trade Jsc., với nhiều phòng trưng bày ở các trung tâm
                 mua sắm lớn như Diamond, Vincom, Lotte, Takashimaia trên toàn
                 quốc.
               </Typography.TextDescription>
-              <Typography.TextDescription mb={50}>
-                Sau nhiều năm phát triển và xác định vị trí của mình tại Việt
-                Nam, MC luôn nỗ lực mang đến cho khách hàng các sản phẩm hết sức
-                thanh lịch và dẫn đầu các xu hướng thời trang.
-              </Typography.TextDescription>
-              <Image src={image8} w="100%" />
+              <Flex>
+                <Typography.TextDescription mb={10}>
+                  Sau nhiều năm phát triển và xác định vị trí của mình tại Việt
+                  Nam, MC luôn nỗ lực mang đến cho khách hàng các sản phẩm hết
+                  sức thanh lịch và dẫn đầu các xu hướng thời trang.
+                </Typography.TextDescription>
+                <Image src={image8} w="50%" />
+              </Flex>
             </Stack>
-          </Flex>
+          ) : (
+            <Flex gap={50}>
+              <Stack style={{ flex: 6 }}>
+                <Image src={image7} w="100%" />
+                <Typography.TextDescription mt={50}>
+                  Các thương hiệu quốc tế được phân phối bởi MC shop bao gồm:
+                  Gucci, Efora, Louis Vuitton, Coco Chanel, Jemma và nhiều
+                  thương hiệu khác.
+                </Typography.TextDescription>
+              </Stack>
+              <Stack style={{ flex: 4 }}>
+                <Typography.TextDescription my={20}>
+                  MC shop được định hướng như một mạng lưới hàng đồ da cao cấp
+                  của Euro-Asia Trade Jsc., với nhiều phòng trưng bày ở các
+                  trung tâm mua sắm lớn như Diamond, Vincom, Lotte, Takashimaia
+                  trên toàn quốc.
+                </Typography.TextDescription>
+                <Typography.TextDescription mb={50}>
+                  Sau nhiều năm phát triển và xác định vị trí của mình tại Việt
+                  Nam, MC luôn nỗ lực mang đến cho khách hàng các sản phẩm hết
+                  sức thanh lịch và dẫn đầu các xu hướng thời trang.
+                </Typography.TextDescription>
+                <Image src={image8} w="100%" />
+              </Stack>
+            </Flex>
+          )}
         </Stack>
 
         <Space
           my={120}
           style={{
-            border: `32px solid ${Colors.Brown}`,
+            border: `12px solid ${Colors.Brown}`,
           }}
         >
-          <Flex px={100} py={115} gap={86}>
-            <Image
-              src={image9}
-              w="100%"
-              h="100%"
-              style={{
-                flex: 3,
-              }}
-            />
+          {isMobile ? (
+            <Stack p={32} gap={24}>
+              <Image
+                src={image9}
+                w="100%"
+                h="100%"
+                style={{
+                  flex: 3,
+                }}
+              />
 
-            <Stack
-              justify="center"
-              gap={30}
-              style={{
-                flex: 5,
-              }}
-            >
-              <Typography.HeadLine3>
-                “Đổi mới trò chơi mang với phong cách và đa dạng cho cách bạn
-                sống”.
-              </Typography.HeadLine3>
-              <Typography.TextDescription>
-                Chúng tôi đề ra nhiệm vụ cung cấp các sản phẩm da thật với tiêu
-                chuẩn chất lượng Châu Âu, các bộ sưu tập theo đúng xu hướng thời
-                trang thế giới cho các người tiêu dùng toàn cầu.
-              </Typography.TextDescription>
+              <Stack
+                justify="center"
+                gap={30}
+                style={{
+                  flex: 5,
+                }}
+              >
+                <Typography.HeadLine3>
+                  “Đổi mới trò chơi mang với phong cách và đa dạng cho cách bạn
+                  sống”.
+                </Typography.HeadLine3>
+                <Typography.TextDescription>
+                  Chúng tôi đề ra nhiệm vụ cung cấp các sản phẩm da thật với
+                  tiêu chuẩn chất lượng Châu Âu, các bộ sưu tập theo đúng xu
+                  hướng thời trang thế giới cho các người tiêu dùng toàn cầu.
+                </Typography.TextDescription>
+              </Stack>
             </Stack>
-          </Flex>
+          ) : (
+            <Flex px={100} py={115} gap={86}>
+              <Image
+                src={image9}
+                w="100%"
+                h="100%"
+                style={{
+                  flex: 3,
+                }}
+              />
+
+              <Stack
+                justify="center"
+                gap={30}
+                style={{
+                  flex: 5,
+                }}
+              >
+                <Typography.HeadLine3>
+                  “Đổi mới trò chơi mang với phong cách và đa dạng cho cách bạn
+                  sống”.
+                </Typography.HeadLine3>
+                <Typography.TextDescription>
+                  Chúng tôi đề ra nhiệm vụ cung cấp các sản phẩm da thật với
+                  tiêu chuẩn chất lượng Châu Âu, các bộ sưu tập theo đúng xu
+                  hướng thời trang thế giới cho các người tiêu dùng toàn cầu.
+                </Typography.TextDescription>
+              </Stack>
+            </Flex>
+          )}
         </Space>
       </Container>
     </>

@@ -9,16 +9,18 @@ import {
   Image,
   Modal,
   UnstyledButton,
+  em,
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
 
 import image2 from '../../assets/images/homepage/image 23-1.png';
 import image3 from '../../assets/images/homepage/image 21-1.png';
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 
 function MyOrder() {
   const [opened, { open, close }] = useDisclosure(false);
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   return (
     <Container size="xl">
@@ -74,6 +76,248 @@ function MyOrder() {
       <Container size="lg">
         <Divider mt={40} />
         <UnstyledButton onClick={open}>
+          {isMobile ? (
+            <Stack
+              gap={12}
+              align="center"
+              justify="space-between"
+              w="100%"
+              px={32}
+            >
+              <Image src={image2} />
+              <Stack gap={12}>
+                <Typography.Body1 fw="bold">
+                  GUCCI DIANA MEDIUM SHOULDER
+                </Typography.Body1>
+                <Flex align="center" justify="center" gap={10}>
+                  <Typography.Body1>Màu sắc: </Typography.Body1>
+                  <Box
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 40,
+                      backgroundColor: Colors.White,
+                      border: '1px solid',
+                      borderColor: Colors.Brown,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Box
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 32,
+                        backgroundColor: Colors.Brown,
+                      }}
+                    />
+                  </Box>
+                </Flex>
+              </Stack>
+              <Flex align="center" gap={10}>
+                <Typography.Body1>Số lượng: </Typography.Body1>
+                <Center>
+                  <Typography.HeadLine4>1</Typography.HeadLine4>
+                </Center>
+              </Flex>
+              <Typography.HeadLine4 fw="bold" mb={24}>
+                62.000.000 VNĐ
+              </Typography.HeadLine4>
+            </Stack>
+          ) : (
+            <Flex
+              gap={12}
+              align="center"
+              justify="space-between"
+              w="100%"
+              px={32}
+            >
+              <Image src={image2} w={250} />
+              <Stack gap={12} w={200}>
+                <Typography.Body1>GUCCI DIANA MEDIUM SHOULDER</Typography.Body1>
+                <Flex align="center" gap={10}>
+                  <Typography.Body1>Màu sắc: </Typography.Body1>
+                  <Box
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 40,
+                      backgroundColor: Colors.White,
+                      border: '1px solid',
+                      borderColor: Colors.Brown,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Box
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 32,
+                        backgroundColor: Colors.Brown,
+                      }}
+                    />
+                  </Box>
+                </Flex>
+              </Stack>
+              <Center w={150}>
+                <Typography.HeadLine4>1</Typography.HeadLine4>
+              </Center>
+              <Typography.HeadLine4 fw="bold">
+                62.000.000 VNĐ
+              </Typography.HeadLine4>
+            </Flex>
+          )}
+        </UnstyledButton>
+        <Divider />
+
+        <UnstyledButton onClick={open}>
+          {isMobile ? (
+            <Stack gap={12} align="center" justify="space-between" px={32}>
+              <Image src={image3} />
+              <Stack gap={12}>
+                <Typography.Body1 fw="bold">
+                  Speedy Bandoulière 25
+                </Typography.Body1>
+                <Flex align="center" justify="center" gap={10}>
+                  <Typography.Body1>Màu sắc: </Typography.Body1>
+                  <Box
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 40,
+                      backgroundColor: Colors.White,
+                      border: '1px solid',
+                      borderColor: Colors.Black,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Box
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 32,
+                        backgroundColor: Colors.Black,
+                      }}
+                    />
+                  </Box>
+                </Flex>
+              </Stack>
+              <Flex align="center" gap={10}>
+                <Typography.Body1>Số lượng: </Typography.Body1>
+                <Center>
+                  <Typography.HeadLine4>1</Typography.HeadLine4>
+                </Center>
+              </Flex>
+              <Typography.HeadLine4 fw="bold" mb={24}>
+                92.000.000 VNĐ
+              </Typography.HeadLine4>
+            </Stack>
+          ) : (
+            <Flex gap={12} align="center" justify="space-between" px={32}>
+              <Image src={image3} w={250} />
+              <Stack w={200} gap={12}>
+                <Typography.Body1>Speedy Bandoulière 25</Typography.Body1>
+                <Flex align="center" gap={10}>
+                  <Typography.Body1>Màu sắc: </Typography.Body1>
+                  <Box
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 40,
+                      backgroundColor: Colors.White,
+                      border: '1px solid',
+                      borderColor: Colors.Black,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Box
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 32,
+                        backgroundColor: Colors.Black,
+                      }}
+                    />
+                  </Box>
+                </Flex>
+              </Stack>
+              <Center w={150}>
+                <Typography.HeadLine4>1</Typography.HeadLine4>
+              </Center>
+              <Typography.HeadLine4 fw="bold">
+                92.000.000 VNĐ
+              </Typography.HeadLine4>
+            </Flex>
+          )}
+        </UnstyledButton>
+        <Divider mb={40} />
+      </Container>
+
+      <Modal
+        opened={opened}
+        onClose={close}
+        title={
+          <Typography.HeadLine5 fw="bold">
+            Thông tin đơn hàng
+          </Typography.HeadLine5>
+        }
+        size="xl"
+        centered
+      >
+        <Typography.Body1>Mã hoá đơn: VNCART21280823</Typography.Body1>
+        <Typography.Body1 my={8}>Trạng thái: Chờ vận chuyển</Typography.Body1>
+        <Divider />
+        {isMobile ? (
+          <Stack gap={12} align="center" px={32}>
+            <Image src={image2} />
+            <Stack gap={12}>
+              <Typography.Body1 fw="bold">
+                GUCCI DIANA MEDIUM SHOULDER
+              </Typography.Body1>
+              <Flex align="center" justify="center" gap={10}>
+                <Typography.Body1>Màu sắc: </Typography.Body1>
+                <Box
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 40,
+                    backgroundColor: Colors.White,
+                    border: '1px solid',
+                    borderColor: Colors.Brown,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Box
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 32,
+                      backgroundColor: Colors.Brown,
+                    }}
+                  />
+                </Box>
+              </Flex>
+            </Stack>
+            <Flex align="center" gap={10}>
+              <Typography.Body1>Số lượng: </Typography.Body1>
+              <Center>
+                <Typography.HeadLine4>1</Typography.HeadLine4>
+              </Center>
+            </Flex>
+            <Typography.HeadLine4 fw="bold" mb={24}>
+              62.000.000 VNĐ
+            </Typography.HeadLine4>
+          </Stack>
+        ) : (
           <Flex
             gap={12}
             align="center"
@@ -117,10 +361,53 @@ function MyOrder() {
               62.000.000 VNĐ
             </Typography.HeadLine4>
           </Flex>
-        </UnstyledButton>
+        )}
         <Divider />
 
-        <UnstyledButton onClick={open}>
+        {isMobile ? (
+          <Stack gap={12} align="center" px={32}>
+            <Image src={image3} />
+            <Stack gap={12}>
+              <Typography.Body1 fw="bold">
+                Speedy Bandoulière 25
+              </Typography.Body1>
+              <Flex align="center" justify="center" gap={10}>
+                <Typography.Body1>Màu sắc: </Typography.Body1>
+                <Box
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 40,
+                    backgroundColor: Colors.White,
+                    border: '1px solid',
+                    borderColor: Colors.Black,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Box
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 32,
+                      backgroundColor: Colors.Black,
+                    }}
+                  />
+                </Box>
+              </Flex>
+            </Stack>
+            <Flex align="center" gap={10}>
+              <Typography.Body1>Số lượng: </Typography.Body1>
+              <Center>
+                <Typography.HeadLine4>1</Typography.HeadLine4>
+              </Center>
+            </Flex>
+            <Typography.HeadLine4 fw="bold" mb={24}>
+              92.000.000 VNĐ
+            </Typography.HeadLine4>
+          </Stack>
+        ) : (
           <Flex gap={12} align="center" justify="space-between" px={32}>
             <Image src={image3} w={250} />
             <Stack w={200} gap={12}>
@@ -158,96 +445,7 @@ function MyOrder() {
               92.000.000 VNĐ
             </Typography.HeadLine4>
           </Flex>
-        </UnstyledButton>
-        <Divider mb={40} />
-      </Container>
-
-      <Modal
-        opened={opened}
-        onClose={close}
-        title={
-          <Typography.HeadLine5 fw="bold">
-            Thông tin đơn hàng
-          </Typography.HeadLine5>
-        }
-        size="xl"
-        centered
-      >
-        <Typography.Body1>Mã hoá đơn: VNCART21280823</Typography.Body1>
-        <Typography.Body1 my={8}>Trạng thái: Chờ vận chuyển</Typography.Body1>
-        <Divider />
-        <Flex gap={12} align="center" justify="space-between" w="100%" px={32}>
-          <Image src={image2} w={180} />
-          <Stack gap={12} w={200}>
-            <Typography.Body1>GUCCI DIANA MEDIUM SHOULDER</Typography.Body1>
-            <Flex align="center" gap={10}>
-              <Typography.Body1>Màu sắc: </Typography.Body1>
-              <Box
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 40,
-                  backgroundColor: Colors.White,
-                  border: '1px solid',
-                  borderColor: Colors.Brown,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Box
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 32,
-                    backgroundColor: Colors.Brown,
-                  }}
-                />
-              </Box>
-            </Flex>
-          </Stack>
-          <Center w={150}>
-            <Typography.HeadLine4>1</Typography.HeadLine4>
-          </Center>
-          <Typography.HeadLine4 fw="bold">62.000.000 VNĐ</Typography.HeadLine4>
-        </Flex>
-        <Divider />
-
-        <Flex gap={12} align="center" justify="space-between" px={32}>
-          <Image src={image3} w={180} />
-          <Stack w={200} gap={12}>
-            <Typography.Body1>Speedy Bandoulière 25</Typography.Body1>
-            <Flex align="center" gap={10}>
-              <Typography.Body1>Màu sắc: </Typography.Body1>
-              <Box
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 40,
-                  backgroundColor: Colors.White,
-                  border: '1px solid',
-                  borderColor: Colors.Black,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Box
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 32,
-                    backgroundColor: Colors.Black,
-                  }}
-                />
-              </Box>
-            </Flex>
-          </Stack>
-          <Center w={150}>
-            <Typography.HeadLine4>1</Typography.HeadLine4>
-          </Center>
-          <Typography.HeadLine4>92.000.000 VNĐ</Typography.HeadLine4>
-        </Flex>
+        )}
         <Divider mb={40} />
 
         <Stack gap={24}>

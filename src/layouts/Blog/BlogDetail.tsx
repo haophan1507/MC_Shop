@@ -7,6 +7,7 @@ import {
   Grid,
   Image,
   Stack,
+  em,
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
@@ -32,6 +33,7 @@ import image9 from '../../assets/images/blog/Content/Image-8.png';
 import image10 from '../../assets/images/blog/Content/Image-9.png';
 import image11 from '../../assets/images/blog/Image.png';
 import image12 from '../../assets/images/blog/Image-1.png';
+import { useMediaQuery } from '@mantine/hooks';
 
 const listImage = [image1, image2, image3, image4, image5, image6];
 
@@ -61,6 +63,8 @@ const list1 = [
 
 function BlogDetail() {
   const navigate = useNavigate();
+
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   return (
     <Container size="xl">
@@ -108,7 +112,7 @@ function BlogDetail() {
 
       <Grid my={64}>
         {listImage.map((item, index) => (
-          <Grid.Col key={index} span={4}>
+          <Grid.Col key={index} span={isMobile ? 6 : 4}>
             <Image src={item} />
           </Grid.Col>
         ))}
@@ -166,7 +170,7 @@ function BlogDetail() {
         <Grid my={64} w="100%">
           {list1.map((item) => {
             return (
-              <Grid.Col key={item.title} span={4}>
+              <Grid.Col key={item.title} span={isMobile ? 12 : 4}>
                 <Stack>
                   <Image src={item.image} />
 

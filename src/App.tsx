@@ -1,9 +1,11 @@
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import '@mantine/dates/styles.css';
+import '@mantine/notifications/styles.css';
 import { MantineProvider } from '@mantine/core';
 import { theme } from './theme';
 import { Route, Routes } from 'react-router-dom';
+import { Notifications } from '@mantine/notifications';
 import Home from './layouts/Home';
 import Blog from './layouts/Blog';
 import Contact from './layouts/Contact';
@@ -25,6 +27,8 @@ export default function App() {
         <Route path="/auth/*" element={<Auth />} />
       </Routes>
       <Footer />
+
+      <Notifications position="top-center" />
     </MantineProvider>
   );
 }

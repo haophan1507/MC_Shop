@@ -130,7 +130,12 @@ function Headers() {
 
             <Drawer size="sm" position="right" opened={opened} onClose={close}>
               <Stack>
-                <UnstyledButton onClick={() => navigate('/')}>
+                <UnstyledButton
+                  onClick={() => {
+                    navigate('/');
+                    close();
+                  }}
+                >
                   Trang chủ
                 </UnstyledButton>
                 <UnstyledButton onClick={toggleLinks}>
@@ -141,62 +146,99 @@ function Headers() {
                 <Collapse in={linksOpened}>
                   <Stack ml={24}>
                     <UnstyledButton
-                      onClick={() =>
-                        navigate('/product/Tất cả các túi sách Nữ')
-                      }
+                      onClick={() => {
+                        navigate('/product/Tất cả các túi sách Nữ');
+                        close();
+                      }}
                     >
                       Tất cả các túi sách Nữ
                     </UnstyledButton>
                     <UnstyledButton
-                      onClick={() =>
-                        navigate('/product/Tất cả các túi sách Nam')
-                      }
+                      onClick={() => {
+                        navigate('/product/Tất cả các túi sách Nam');
+                        close();
+                      }}
                     >
                       Tất cả các túi sách Nam
                     </UnstyledButton>
                     <UnstyledButton
-                      onClick={() => navigate('/product/Các túi ví')}
+                      onClick={() => {
+                        navigate('/product/Các túi ví');
+                        close();
+                      }}
                     >
                       Các túi ví
                     </UnstyledButton>
                     <UnstyledButton
-                      onClick={() => navigate('/product/Túi Crossbody')}
+                      onClick={() => {
+                        navigate('/product/Túi Crossbody');
+                        close();
+                      }}
                     >
                       Túi Crossbody
                     </UnstyledButton>
                     <UnstyledButton
-                      onClick={() => navigate('/product/Túi Mini')}
+                      onClick={() => {
+                        navigate('/product/Túi Mini');
+                        close();
+                      }}
                     >
                       Túi Mini
                     </UnstyledButton>
                     <UnstyledButton
-                      onClick={() => navigate('/product/Túi xách tay trên')}
+                      onClick={() => {
+                        navigate('/product/Túi xách tay trên');
+                        close();
+                      }}
                     >
                       Túi xách tay trên
                     </UnstyledButton>
                     <UnstyledButton
-                      onClick={() => navigate('/product/Túi đeo vai')}
+                      onClick={() => {
+                        navigate('/product/Túi đeo vai');
+                        close();
+                      }}
                     >
                       Túi đeo vai
                     </UnstyledButton>
                   </Stack>
                 </Collapse>
-                <UnstyledButton onClick={() => navigate('/blog')}>
+                <UnstyledButton
+                  onClick={() => {
+                    navigate('/blog');
+                    close();
+                  }}
+                >
                   Bài viết
                 </UnstyledButton>
 
-                <UnstyledButton onClick={() => navigate('/contact')}>
+                <UnstyledButton
+                  onClick={() => {
+                    navigate('/contact');
+                    close();
+                  }}
+                >
                   Liên hệ
                 </UnstyledButton>
               </Stack>
             </Drawer>
 
             <Flex gap={24}>
-              <UnstyledButton onClick={() => navigate('/product/search')}>
+              <UnstyledButton
+                onClick={() => {
+                  navigate('/product/search');
+                  close();
+                }}
+              >
                 <IconSearch />
               </UnstyledButton>
 
-              <UnstyledButton onClick={() => navigate('/product/cart')}>
+              <UnstyledButton
+                onClick={() => {
+                  navigate('/product/cart');
+                  close();
+                }}
+              >
                 <IconShoppingBag />
               </UnstyledButton>
 
@@ -226,7 +268,12 @@ function Headers() {
                   </HoverCard.Dropdown>
                 </HoverCard>
               ) : (
-                <UnstyledButton onClick={() => navigate('/auth/login')}>
+                <UnstyledButton
+                  onClick={() => {
+                    navigate('/auth/login');
+                    close();
+                  }}
+                >
                   <IconUser />
                 </UnstyledButton>
               )}

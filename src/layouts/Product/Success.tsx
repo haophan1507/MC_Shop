@@ -8,6 +8,7 @@ import {
   Grid,
   Image,
   Stack,
+  em,
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
@@ -16,9 +17,11 @@ import { useNavigate } from 'react-router-dom';
 import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
 import image2 from '../../assets/images/homepage/image 23-1.png';
 import image3 from '../../assets/images/homepage/image 21-1.png';
+import { useMediaQuery } from '@mantine/hooks';
 
 function Success() {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   return (
     <Container size="xl">
@@ -32,14 +35,20 @@ function Success() {
           marginBlock: 50,
         }}
       >
-        <Typography.HeadLine2 c={Colors.Brown}>
-          Đơn hàng đã đặt thành công!
-        </Typography.HeadLine2>
+        {isMobile ? (
+          <Typography.HeadLine3 c={Colors.Brown}>
+            Đơn hàng đã đặt thành công!
+          </Typography.HeadLine3>
+        ) : (
+          <Typography.HeadLine2 c={Colors.Brown}>
+            Đơn hàng đã đặt thành công!
+          </Typography.HeadLine2>
+        )}
       </Center>
 
       <Grid>
         <Grid.Col
-          span={3}
+          span={isMobile ? 6 : 3}
           style={{
             borderRight: '1px solid black',
           }}
@@ -52,7 +61,7 @@ function Success() {
         </Grid.Col>
 
         <Grid.Col
-          span={3}
+          span={isMobile ? 6 : 3}
           style={{
             borderRight: '1px solid black',
           }}
@@ -63,7 +72,7 @@ function Success() {
           <Typography.Body1 ta="center">13/08/2023</Typography.Body1>
         </Grid.Col>
         <Grid.Col
-          span={3}
+          span={isMobile ? 6 : 3}
           style={{
             borderRight: '1px solid black',
           }}
@@ -73,7 +82,7 @@ function Success() {
           </Typography.Body1>
           <Typography.Body1 ta="center">125.200.000 VNĐ</Typography.Body1>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col span={isMobile ? 6 : 3}>
           <Typography.Body1 c={Colors.Grey1} ta="center" mb={8}>
             Phương thức thanh toán
           </Typography.Body1>
@@ -87,78 +96,179 @@ function Success() {
         <Typography.HeadLine5 fw="bold" tt="uppercase" mt={50}>
           Chi tiết ĐƠN HÀNG
         </Typography.HeadLine5>
-        <Flex gap={12} align="center" justify="space-between" w="100%" px={32}>
-          <Image src={image2} w={250} />
-          <Stack gap={12} w={200}>
-            <Typography.Body1>GUCCI DIANA MEDIUM SHOULDER</Typography.Body1>
-            <Flex align="center" gap={10}>
-              <Typography.Body1>Màu sắc: </Typography.Body1>
-              <Box
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 40,
-                  backgroundColor: Colors.White,
-                  border: '1px solid',
-                  borderColor: Colors.Brown,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
+        {isMobile ? (
+          <Stack gap={12} align="center" px={32}>
+            <Image src={image2} />
+            <Stack gap={12}>
+              <Typography.Body1 fw="bold">
+                GUCCI DIANA MEDIUM SHOULDER
+              </Typography.Body1>
+              <Flex align="center" justify="center" gap={10}>
+                <Typography.Body1>Màu sắc: </Typography.Body1>
                 <Box
                   style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 32,
-                    backgroundColor: Colors.Brown,
+                    width: 40,
+                    height: 40,
+                    borderRadius: 40,
+                    backgroundColor: Colors.White,
+                    border: '1px solid',
+                    borderColor: Colors.Brown,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
-                />
-              </Box>
+                >
+                  <Box
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 32,
+                      backgroundColor: Colors.Brown,
+                    }}
+                  />
+                </Box>
+              </Flex>
+            </Stack>
+            <Flex align="center" gap={10}>
+              <Typography.Body1>Số lượng: </Typography.Body1>
+              <Center>
+                <Typography.HeadLine4>1</Typography.HeadLine4>
+              </Center>
             </Flex>
+            <Typography.HeadLine4 fw="bold" mb={24}>
+              62.000.000 VNĐ
+            </Typography.HeadLine4>
           </Stack>
-          <Center w={150}>
-            <Typography.HeadLine4>1</Typography.HeadLine4>
-          </Center>
-          <Typography.HeadLine4 fw="bold">62.000.000 VNĐ</Typography.HeadLine4>
-        </Flex>
-        <Divider />
+        ) : (
+          <Flex
+            gap={12}
+            align="center"
+            justify="space-between"
+            w="100%"
+            px={32}
+          >
+            <Image src={image2} w={250} />
+            <Stack gap={12} w={200}>
+              <Typography.Body1>GUCCI DIANA MEDIUM SHOULDER</Typography.Body1>
+              <Flex align="center" gap={10}>
+                <Typography.Body1>Màu sắc: </Typography.Body1>
+                <Box
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 40,
+                    backgroundColor: Colors.White,
+                    border: '1px solid',
+                    borderColor: Colors.Brown,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Box
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 32,
+                      backgroundColor: Colors.Brown,
+                    }}
+                  />
+                </Box>
+              </Flex>
+            </Stack>
+            <Center w={150}>
+              <Typography.HeadLine4>1</Typography.HeadLine4>
+            </Center>
+            <Typography.HeadLine4 fw="bold">
+              62.000.000 VNĐ
+            </Typography.HeadLine4>
+          </Flex>
+        )}
 
-        <Flex gap={12} align="center" justify="space-between" px={32}>
-          <Image src={image3} w={250} />
-          <Stack w={200} gap={12}>
-            <Typography.Body1>Speedy Bandoulière 25</Typography.Body1>
-            <Flex align="center" gap={10}>
-              <Typography.Body1>Màu sắc: </Typography.Body1>
-              <Box
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 40,
-                  backgroundColor: Colors.White,
-                  border: '1px solid',
-                  borderColor: Colors.Black,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
+        <Divider />
+        {isMobile ? (
+          <Stack gap={12} align="center" px={32}>
+            <Image src={image3} />
+            <Stack gap={12}>
+              <Typography.Body1 fw="bold">
+                Speedy Bandoulière 25
+              </Typography.Body1>
+              <Flex align="center" justify="center" gap={10}>
+                <Typography.Body1>Màu sắc: </Typography.Body1>
                 <Box
                   style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 32,
-                    backgroundColor: Colors.Black,
+                    width: 40,
+                    height: 40,
+                    borderRadius: 40,
+                    backgroundColor: Colors.White,
+                    border: '1px solid',
+                    borderColor: Colors.Black,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
-                />
-              </Box>
+                >
+                  <Box
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 32,
+                      backgroundColor: Colors.Black,
+                    }}
+                  />
+                </Box>
+              </Flex>
+            </Stack>
+            <Flex align="center" gap={10}>
+              <Typography.Body1>Số lượng: </Typography.Body1>
+              <Center>
+                <Typography.HeadLine4>1</Typography.HeadLine4>
+              </Center>
             </Flex>
+            <Typography.HeadLine4 fw="bold" mb={24}>
+              92.000.000 VNĐ
+            </Typography.HeadLine4>
           </Stack>
-          <Center w={150}>
-            <Typography.HeadLine4>1</Typography.HeadLine4>
-          </Center>
-          <Typography.HeadLine4 fw="bold">92.000.000 VNĐ</Typography.HeadLine4>
-        </Flex>
+        ) : (
+          <Flex gap={12} align="center" justify="space-between" px={32}>
+            <Image src={image3} w={250} />
+            <Stack w={200} gap={12}>
+              <Typography.Body1>Speedy Bandoulière 25</Typography.Body1>
+              <Flex align="center" gap={10}>
+                <Typography.Body1>Màu sắc: </Typography.Body1>
+                <Box
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 40,
+                    backgroundColor: Colors.White,
+                    border: '1px solid',
+                    borderColor: Colors.Black,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Box
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 32,
+                      backgroundColor: Colors.Black,
+                    }}
+                  />
+                </Box>
+              </Flex>
+            </Stack>
+            <Center w={150}>
+              <Typography.HeadLine4>1</Typography.HeadLine4>
+            </Center>
+            <Typography.HeadLine4 fw="bold">
+              92.000.000 VNĐ
+            </Typography.HeadLine4>
+          </Flex>
+        )}
+
         <Divider mb={40} />
 
         <Stack gap={24}>
