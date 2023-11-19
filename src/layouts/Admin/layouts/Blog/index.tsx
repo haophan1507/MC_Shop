@@ -1,7 +1,6 @@
 import {
   Button,
   Center,
-  Divider,
   Flex,
   Grid,
   Image,
