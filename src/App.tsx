@@ -13,6 +13,7 @@ import Product from './layouts/Product';
 import Headers from './components/Headers';
 import Footer from './components/Footer';
 import Auth from './layouts/Auth';
+import Admin from './layouts/Admin';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/product/*" element={<Product />} />
         <Route path="/contact/*" element={<Contact />} />
         <Route path="/auth/*" element={<Auth />} />
+        <Route path="/admin/*" element={<Admin />} />
       </Routes>
       <Footer />
 

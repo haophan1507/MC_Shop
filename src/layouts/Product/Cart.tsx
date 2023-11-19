@@ -220,7 +220,7 @@ function Cart() {
 
           <Divider />
         </Grid.Col>
-        <Grid.Col span={isMobile ? 12 : 8}>
+        <Grid.Col span={isMobile ? 12 : 4}>
           <Box
             py={20}
             px={16}

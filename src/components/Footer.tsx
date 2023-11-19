@@ -12,7 +12,7 @@ import {
   em,
 } from '@mantine/core';
 import Colors from '../common/components/Colors';
-import { Link as LinkRouter } from 'react-router-dom';
+import { Link as LinkRouter, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
 import logo from '../assets/images/logo_MC.png';
 import { Typography } from '../common/components/Typography';
@@ -39,10 +39,15 @@ const Link = styled(LinkRouter)`
 `;
 
 function Footer() {
+  const { pathname } = useLocation();
   const [productsOpened, { toggle: toggleProducts }] = useDisclosure(true);
   const [supportOpened, { toggle: toggleSupport }] = useDisclosure(false);
 
   const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
+
+  if (pathname.includes('admin') && pathname !== '/admin/login') {
+    return <></>;
+  }
 
   return (
     <Container fluid py={80} bg={Colors.LightGrey}>

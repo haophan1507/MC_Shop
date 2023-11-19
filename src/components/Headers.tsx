@@ -57,6 +57,10 @@ function Headers() {
 
   const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
+  if (pathname.includes('admin') && pathname !== '/admin/login') {
+    return <></>;
+  }
+
   return (
     <Container
       fluid
@@ -66,7 +70,8 @@ function Headers() {
         backgroundColor:
           '/'.includes(pathname) ||
           pathname.includes('product-detail') ||
-          pathname.includes('auth')
+          pathname.includes('auth') ||
+          pathname.includes('admin/login')
             ? Colors.LightGrey
             : Colors.White,
       }}

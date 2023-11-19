@@ -41,7 +41,7 @@ function Payment() {
       </Flex>
 
       <Grid mb={140}>
-        <Grid.Col span={isMobile ? 12 : 6}>
+        <Grid.Col span={isMobile ? 12 : 7}>
           <Stack gap={20}>
             <Typography.HeadLine4 tt="uppercase">
               Chi tiết thanh toán
@@ -77,9 +77,7 @@ function Payment() {
           </Stack>
         </Grid.Col>
 
-        <Grid.Col span={1} />
-
-        <Grid.Col span={isMobile ? 12 : 6}>
+        <Grid.Col span={isMobile ? 12 : 5}>
           <Box
             py={32}
             px={32}
