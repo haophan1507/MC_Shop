@@ -89,7 +89,7 @@ function CreateBlog() {
               <Grid columns={25} w="100%">
                 {Array(6)
                   .fill(null)
-                  .map((item, index) => (
+                  .map((_item, index) => (
                     <Grid.Col span={5} key={index + 'upload_image'}>
                       <Box
                         w="100%"
@@ -134,7 +134,7 @@ function CreateBlog() {
               <Grid columns={25} w="100%">
                 {Array(5)
                   .fill(null)
-                  .map((item, index) => (
+                  .map((_item, index) => (
                     <Grid.Col span={5} key={index + 'upload_image'}>
                       <Box
                         w="100%"
