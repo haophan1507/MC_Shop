@@ -1,6 +1,7 @@
 import {
   Button,
   Center,
+  Checkbox,
   Container,
   Flex,
   Grid,
@@ -137,8 +138,12 @@ function SearchProduct() {
             </HoverCard.Target>
             <HoverCard.Dropdown>
               <Stack>
-                <Typography.Body2>Danh mục</Typography.Body2>
-                <Typography.Body2>Danh mục</Typography.Body2>
+                <Typography.Body2>Tất cả các túi xách (150)</Typography.Body2>
+                <Typography.Body2>Các túi ví (12)</Typography.Body2>
+                <Typography.Body2>Túi Crossbody (28)</Typography.Body2>
+                <Typography.Body2>Túi Mini (10)</Typography.Body2>
+                <Typography.Body2>Túi xách tay trên (40)</Typography.Body2>
+                <Typography.Body2>Túi đeo vai (60)</Typography.Body2>
               </Stack>
             </HoverCard.Dropdown>
           </HoverCard>
@@ -150,6 +155,21 @@ function SearchProduct() {
                 <IconChevronDown size={20} />
               </Flex>
             </HoverCard.Target>
+            <HoverCard.Dropdown>
+              <Stack>
+                <Typography.Body2>Celine</Typography.Body2>
+                <Typography.Body2>Chanel</Typography.Body2>
+                <Typography.Body2>Charles & Keith</Typography.Body2>
+                <Typography.Body2>Christant Dior</Typography.Body2>
+                <Typography.Body2>COACH</Typography.Body2>
+                <Typography.Body2>JEMMA</Typography.Body2>
+                <Typography.Body2>GUCCI</Typography.Body2>
+                <Typography.Body2>HERMES</Typography.Body2>
+                <Typography.Body2>LOUIS VUITTON</Typography.Body2>
+                <Typography.Body2>Prada</Typography.Body2>
+                <Typography.Body2>Các hãng khác</Typography.Body2>
+              </Stack>
+            </HoverCard.Dropdown>
           </HoverCard>
 
           <HoverCard shadow="md">
@@ -159,6 +179,46 @@ function SearchProduct() {
                 <IconChevronDown size={20} />
               </Flex>
             </HoverCard.Target>
+            <HoverCard.Dropdown>
+              <Checkbox.Group defaultValue={['Đen']}>
+                <Grid mt="xs">
+                  <Grid.Col span={6}>
+                    <Stack>
+                      <Checkbox value="Đen" label="Đen" color={Colors.Brown} />
+                      <Checkbox
+                        value="Trắng"
+                        label="Trắng"
+                        color={Colors.Brown}
+                      />
+                      <Checkbox value="Bạc" label="Bạc" color={Colors.Brown} />
+                      <Checkbox value="Xám" label="Xám" color={Colors.Brown} />
+                      <Checkbox
+                        value="Beige"
+                        label="Beige"
+                        color={Colors.Brown}
+                      />
+                    </Stack>
+                  </Grid.Col>
+                  <Grid.Col span={6}>
+                    <Stack>
+                      <Checkbox value="Nâu" label="Nâu" color={Colors.Brown} />
+                      <Checkbox
+                        value="Vàng"
+                        label="Vàng"
+                        color={Colors.Brown}
+                      />
+                      <Checkbox value="Đỏ" label="Đỏ" color={Colors.Brown} />
+                      <Checkbox value="Cam" label="Cam" color={Colors.Brown} />
+                      <Checkbox
+                        value="Hồng"
+                        label="Hồng"
+                        color={Colors.Brown}
+                      />
+                    </Stack>
+                  </Grid.Col>
+                </Grid>
+              </Checkbox.Group>
+            </HoverCard.Dropdown>
           </HoverCard>
 
           <HoverCard shadow="md">
@@ -168,6 +228,14 @@ function SearchProduct() {
                 <IconChevronDown size={20} />
               </Flex>
             </HoverCard.Target>
+            <HoverCard.Dropdown>
+              <Stack>
+                <Typography.Body2>Mới nhất</Typography.Body2>
+                <Typography.Body2>Bán chạy nhất</Typography.Body2>
+                <Typography.Body2>Giá: từ cao đến thấp</Typography.Body2>
+                <Typography.Body2>Giá: từ thấp đến cao</Typography.Body2>
+              </Stack>
+            </HoverCard.Dropdown>
           </HoverCard>
         </Flex>
       </Flex>
@@ -176,12 +244,12 @@ function SearchProduct() {
         {name === 'Tất cả các túi sách Nữ'
           ? ImageWoman.map((item, index) => (
               <Grid.Col span={isMobile ? 6 : 3}>
-                <ProductItem key={index} item={item} />
+                <ProductItem key={index + Math.random()} item={item} />
               </Grid.Col>
             ))
           : ImageMan.map((item, index) => (
               <Grid.Col span={isMobile ? 6 : 3}>
-                <ProductItem key={index} item={item} />
+                <ProductItem key={index + Math.random()} item={item} />
               </Grid.Col>
             ))}
       </Grid>
@@ -240,7 +308,7 @@ const ProductItem = ({ item }: { item: any }) => {
                   icon: (
                     <IconCheck style={{ width: rem(20), height: rem(20) }} />
                   ),
-                  color: 'teal',
+                  color: Colors.Brown,
                   autoClose: 1000,
                   message: (
                     <Stack my={16}>

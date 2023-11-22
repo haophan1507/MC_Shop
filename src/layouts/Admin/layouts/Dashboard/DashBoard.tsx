@@ -221,7 +221,7 @@ function DashBoard() {
       <Grid gutter={16}>
         {listStatus.map((item) => (
           <Grid.Col span={3} key={item.title}>
-            <Paper shadow="xs" p="xl">
+            <Paper shadow="xs">
               <Flex align="center" bg={Colors.White} p={25} gap={20}>
                 <Image src={item.image} w={60} h={60} />
                 <Stack>

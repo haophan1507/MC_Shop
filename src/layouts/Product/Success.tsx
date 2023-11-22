@@ -312,7 +312,7 @@ function Success() {
             w={450}
             onClick={() => navigate('/')}
           >
-            <Typography.Body1 c={Colors.White}>Thanh toán</Typography.Body1>
+            <Typography.Body1 c={Colors.White}>Trở về mua sắm</Typography.Body1>
           </Button>
         </Center>
       </Container>

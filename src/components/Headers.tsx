@@ -6,6 +6,8 @@ import {
   Flex,
   HoverCard,
   Image,
+  Input,
+  Modal,
   Stack,
   UnstyledButton,
   em,
@@ -24,6 +26,7 @@ import Colors from '../common/components/Colors';
 import logo from '../assets/images/logo_MC.png';
 import { Typography } from '../common/components/Typography';
 import { useDisclosure, useLocalStorage, useMediaQuery } from '@mantine/hooks';
+import { useCallback } from 'react';
 
 const Link = styled(NavLink)`
   text-decoration: none;
@@ -51,9 +54,20 @@ const LinkMenu = styled(NavLink)`
 function Headers() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  const [value, setValue] = useLocalStorage({ key: 'user' });
+
   const [opened, { open, close }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const [value, setValue] = useLocalStorage({ key: 'user' });
+  const [openedModel, { open: openModel, close: closeModel }] =
+    useDisclosure(false);
+
+  const handleSearch = useCallback((ev: any) => {
+    if (ev.code === 'Enter') {
+      navigate('/product/search');
+      closeModel();
+    }
+  }, []);
 
   const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
@@ -229,12 +243,7 @@ function Headers() {
             </Drawer>
 
             <Flex gap={24}>
-              <UnstyledButton
-                onClick={() => {
-                  navigate('/product/search');
-                  close();
-                }}
-              >
+              <UnstyledButton onClick={openModel}>
                 <IconSearch />
               </UnstyledButton>
 
@@ -292,6 +301,26 @@ function Headers() {
           </Flex>
         )}
       </Container>
+
+      <Modal
+        opened={openedModel}
+        onClose={closeModel}
+        withCloseButton={false}
+        size="auto"
+      >
+        <Typography.HeadLine3>Bạn đang cần tìm kiếm gì?</Typography.HeadLine3>
+        <Input
+          size="lg"
+          radius="xs"
+          variant="unstyled"
+          onKeyUp={handleSearch}
+          w={550}
+          rightSection={<IconSearch style={{ color: Colors.Black }} />}
+          style={{
+            borderBottom: '1px solid black',
+          }}
+        />
+      </Modal>
     </Container>
   );
 }

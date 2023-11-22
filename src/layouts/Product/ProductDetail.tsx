@@ -181,7 +181,7 @@ const ProductDetail = () => {
                           style={{ width: rem(20), height: rem(20) }}
                         />
                       ),
-                      color: 'teal',
+                      color: Colors.Brown,
                       autoClose: 1000,
                       message: (
                         <Stack my={16}>
@@ -309,7 +309,7 @@ const ProductDetail = () => {
                             style={{ width: rem(20), height: rem(20) }}
                           />
                         ),
-                        color: 'teal',
+                        color: Colors.Brown,
                         autoClose: 1000,
                         message: (
                           <Stack my={16}>
@@ -533,7 +533,7 @@ const ProductDetail = () => {
                               style={{ width: rem(20), height: rem(20) }}
                             />
                           ),
-                          color: 'teal',
+                          color: Colors.Brown,
                           autoClose: 1000,
                           message: (
                             <Stack my={16}>
