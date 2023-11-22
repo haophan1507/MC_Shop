@@ -8,6 +8,8 @@ import Review from './layouts/Review';
 import User from './layouts/User';
 import Blog from './layouts/Blog';
 import { useLocalStorage } from '@mantine/hooks';
+import CreateCategory from './layouts/Category/CreateCategory';
+import CreateBlog from './layouts/Blog/CreateBlog';
 
 function Admin() {
   const [value] = useLocalStorage({ key: 'admin' });
@@ -18,10 +20,12 @@ function Admin() {
         <Route path="" element={<DashboardIndex />}>
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/category" element={<Category />} />
+          <Route path="/category/create" element={<CreateCategory />} />
           <Route path="/order" element={<Order />} />
           <Route path="/review" element={<Review />} />
           <Route path="/user" element={<User />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/create" element={<CreateBlog />} />
         </Route>
       )}
       <Route path="/login" element={<Login />} />

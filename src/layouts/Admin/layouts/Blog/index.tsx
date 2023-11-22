@@ -1,10 +1,12 @@
 import {
+  Box,
   Button,
   Center,
   Flex,
   Grid,
   Image,
   Input,
+  Modal,
   Pagination,
   Paper,
   Stack,
@@ -22,10 +24,15 @@ import image1 from '../../images/blog-1.png';
 import image2 from '../../images/blog-2.png';
 import image3 from '../../images/blog-3.png';
 import image4 from '../../images/blog-4.png';
+import { useNavigate } from 'react-router-dom';
+import { useDisclosure } from '@mantine/hooks';
 
 const list = [image1, image2, image3, image4];
 
 function Blog() {
+  const navigate = useNavigate();
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <Stack gap={32} m={32}>
       <Flex gap={24} align="center">
@@ -50,6 +57,7 @@ function Blog() {
           size="md"
           color={Colors.Brown}
           leftSection={<IconSquarePlus />}
+          onClick={() => navigate('/admin/blog/create')}
         >
           Thêm bài blog
         </Button>
@@ -71,10 +79,12 @@ function Blog() {
                   thuộc Pháp với các mã cổ điển...
                 </Typography.Body2>
                 <Flex justify="center" gap={108}>
-                  <UnstyledButton>
+                  <UnstyledButton
+                    onClick={() => navigate('/admin/blog/create')}
+                  >
                     <Typography.Body1>Sửa</Typography.Body1>
                   </UnstyledButton>
-                  <UnstyledButton>
+                  <UnstyledButton onClick={open}>
                     <Typography.Body1>Xoá</Typography.Body1>
                   </UnstyledButton>
                 </Flex>
@@ -87,6 +97,44 @@ function Blog() {
       <Center>
         <Pagination total={5} color={Colors.Brown} />
       </Center>
+
+      <Modal
+        opened={opened}
+        onClose={close}
+        withCloseButton={false}
+        size="auto"
+        centered
+      >
+        <Box px={40} py={60} maw={500}>
+          <Typography.HeadLine4 ta="center">
+            Xác nhận xoá sản phẩm ?
+          </Typography.HeadLine4>
+          <Typography.Body1 ta="center" my={32}>
+            Bạn đang xoá sản phẩm trong danh mục
+            <br /> Không thể phục hồi nội dung đã xoá!
+          </Typography.Body1>
+          <Flex justify="center" gap={32}>
+            <Button
+              variant="outline"
+              size="md"
+              color={Colors.Black}
+              radius="xs"
+              onClick={close}
+            >
+              <Typography.Body1>Huỷ</Typography.Body1>
+            </Button>
+            <Button
+              variant="filled"
+              size="md"
+              color={Colors.Brown}
+              radius="xs"
+              onClick={close}
+            >
+              <Typography.Body1 c={Colors.White}>Xác nhận</Typography.Body1>
+            </Button>
+          </Flex>
+        </Box>
+      </Modal>
     </Stack>
   );
 }
