@@ -17,6 +17,8 @@ import {
   IconAdjustmentsHorizontal,
   IconCheck,
   IconX,
+  IconMapPin,
+  IconPhone,
 } from '@tabler/icons-react';
 import Colors from '../../../../common/components/Colors';
 import { Typography } from '../../../../common/components/Typography';
@@ -65,7 +67,8 @@ function Order() {
         />
         <IconBellRinging />
         <Typography.HeadLine5>
-          Good moring, <span style={{ fontWeight: 'bold' }}>Admin</span>
+          Good moring,{' '}
+          <span style={{ fontWeight: 'bold' }}>Đoàn Mạnh Cường</span>
         </Typography.HeadLine5>
       </Flex>
 
@@ -154,6 +157,26 @@ function Order() {
                 <Typography.Body2 c={Colors.Brown}>
                   Đơn hàng đã được đặt
                 </Typography.Body2>
+                <Divider />
+                <Stack>
+                  <Typography.Body2>Thông tin KH:</Typography.Body2>
+                  <Stack px={16}>
+                    <Typography.Body2>JENNIE KIM</Typography.Body2>
+                    <Flex gap={10}>
+                      <IconMapPin color={Colors.LightBrown} />
+                      <Stack>
+                        <Typography.Body2>Hà Nội</Typography.Body2>
+                        <Typography.Body2>Hoàng Mai</Typography.Body2>
+                        <Typography.Body2>Hoàng Liệt</Typography.Body2>
+                        <Typography.Body2>12 Trần Thủ Độ</Typography.Body2>
+                      </Stack>
+                    </Flex>
+                    <Flex gap={10} align="center">
+                      <IconPhone color={Colors.LightBrown} />
+                      <Typography.Body2>+84 889629690</Typography.Body2>
+                    </Flex>
+                  </Stack>
+                </Stack>
                 <Divider />
                 {item.amount > 1 ? (
                   <>

@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Collapse,
   Container,
   Divider,
@@ -260,7 +261,12 @@ function Headers() {
                 <HoverCard width={280} shadow="md">
                   <HoverCard.Target>
                     <UnstyledButton>
-                      <IconUser />
+                      <Avatar
+                        variant="transparent"
+                        src={null}
+                        alt="no image here"
+                        color={Colors.Black}
+                      />
                     </UnstyledButton>
                   </HoverCard.Target>
                   <HoverCard.Dropdown>

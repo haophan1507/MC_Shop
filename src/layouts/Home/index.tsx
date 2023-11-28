@@ -18,7 +18,6 @@ import {
   IconCheck,
   IconChevronLeft,
   IconChevronRight,
-  IconShoppingBagPlus,
 } from '@tabler/icons-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMediaQuery } from '@mantine/hooks';
@@ -66,7 +65,7 @@ function index() {
     <>
       <BannerHeader />
       <Container size="xl" bg={Colors.White}>
-        <Stack gap={50} mt={120}>
+        <Stack gap={50} mt={80}>
           <Typography.HeadLine2 ta="center">
             - BÁN CHẠY NHẤT -
           </Typography.HeadLine2>
@@ -92,33 +91,47 @@ function index() {
               <Typography.HeadLine3 fz={36} fw={600} my={36}>
                 62.000.000 VNĐ
               </Typography.HeadLine3>
-              <Button
-                variant="filled"
-                color={Colors.Brown}
-                radius="xs"
-                w={210}
-                rightSection={<IconShoppingBagPlus size={20} />}
-                onClick={() => {
-                  notifications.show({
-                    icon: (
-                      <IconCheck style={{ width: rem(20), height: rem(20) }} />
-                    ),
-                    color: Colors.Brown,
-                    autoClose: 1000,
-                    message: (
-                      <Stack my={16}>
-                        <Typography.HeadLine5>
-                          Sản phẩm đã được thêm vào Giỏ hàng
-                        </Typography.HeadLine5>
-                      </Stack>
-                    ),
-                  });
-                }}
-              >
-                <Typography.Body1 c={Colors.White}>
-                  Thêm vào giỏ hàng
-                </Typography.Body1>
-              </Button>
+              <Flex gap={24}>
+                <Button
+                  variant="outline"
+                  color={Colors.Brown}
+                  radius="xs"
+                  w={210}
+                  onClick={() => {
+                    notifications.show({
+                      icon: (
+                        <IconCheck
+                          style={{ width: rem(20), height: rem(20) }}
+                        />
+                      ),
+                      color: Colors.Brown,
+                      autoClose: 1000,
+                      message: (
+                        <Stack my={16}>
+                          <Typography.HeadLine5>
+                            Sản phẩm đã được thêm vào Giỏ hàng
+                          </Typography.HeadLine5>
+                        </Stack>
+                      ),
+                    });
+                  }}
+                >
+                  <Typography.Body1 c={Colors.Brown}>
+                    Thêm vào giỏ hàng
+                  </Typography.Body1>
+                </Button>
+                <Button
+                  variant="filled"
+                  color={Colors.Brown}
+                  radius="xs"
+                  w={210}
+                  onClick={() => {
+                    navigate('/product/payment');
+                  }}
+                >
+                  <Typography.Body1 c={Colors.White}>Mua ngay</Typography.Body1>
+                </Button>
+              </Flex>
 
               <Flex align="center" mt={16}>
                 <IconChevronLeft size={40} />
@@ -136,7 +149,7 @@ function index() {
           </Flex>
         </Stack>
 
-        <Stack gap={50} mt={120}>
+        <Stack gap={50} mt={80}>
           <Typography.HeadLine2 ta="center">- BÀI VIẾT -</Typography.HeadLine2>
           <Grid gutter={32}>
             {DATA_BLOG.map((item, index) => {
@@ -180,7 +193,7 @@ function index() {
           </Grid>
         </Stack>
 
-        <Stack gap={50} mt={120}>
+        <Stack gap={50} mt={80}>
           <Typography.HeadLine2 ta="center">
             - VỀ CỬA HÀNG MC -
           </Typography.HeadLine2>
@@ -236,7 +249,7 @@ function index() {
         </Stack>
 
         <Space
-          my={120}
+          my={80}
           style={{
             border: `12px solid ${Colors.Brown}`,
           }}

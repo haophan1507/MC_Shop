@@ -71,62 +71,62 @@ const listStatus = [
 
 const data1 = [
   {
-    name: 'Jan',
+    name: 'Th1',
     '2022': 4000,
     '2023': 2400,
   },
   {
-    name: 'Feb',
+    name: 'Th2',
     '2022': 3000,
     '2023': 1398,
   },
   {
-    name: 'Mar',
+    name: 'Th3',
     '2022': 2000,
     '2023': 9800,
   },
   {
-    name: 'Apr',
+    name: 'Th4',
     '2022': 2780,
     '2023': 3908,
   },
   {
-    name: 'May',
+    name: 'Th5',
     '2022': 1890,
     '2023': 4800,
   },
   {
-    name: 'Jun',
+    name: 'Th6',
     '2022': 2390,
     '2023': 3800,
   },
   {
-    name: 'Jul',
+    name: 'Th7',
     '2022': 3490,
     '2023': 4300,
   },
   {
-    name: 'Aug',
+    name: 'Th8',
     '2022': 3490,
     '2023': 4300,
   },
   {
-    name: 'Sep',
+    name: 'Th9',
     '2022': 3490,
     '2023': 4300,
   },
   {
-    name: 'Oct',
+    name: 'Th10',
     '2022': 3490,
     '2023': 4300,
   },
   {
-    name: 'Nov',
+    name: 'Th11',
     '2022': 3490,
     '2023': 4300,
   },
   {
-    name: 'Des',
+    name: 'Th12',
     '2022': 3490,
     '2023': 4300,
   },
@@ -134,43 +134,43 @@ const data1 = [
 
 const data2 = [
   {
-    name: 'Mon',
+    name: 'Thứ 2',
     'Đơn hàng': 4000,
     'Lượt truy cập': 2400,
     amt: 2400,
   },
   {
-    name: 'Tue',
+    name: 'Thứ 3',
     'Đơn hàng': 3000,
     'Lượt truy cập': 1398,
     amt: 2210,
   },
   {
-    name: 'Wed',
+    name: 'Thứ 4',
     'Đơn hàng': 2000,
     'Lượt truy cập': 9800,
     amt: 2290,
   },
   {
-    name: 'Thu',
+    name: 'Thứ 5',
     'Đơn hàng': 2780,
     'Lượt truy cập': 3908,
     amt: 2000,
   },
   {
-    name: 'Fri',
+    name: 'Thứ 6',
     'Đơn hàng': 1890,
     'Lượt truy cập': 4800,
     amt: 2181,
   },
   {
-    name: 'Sat',
+    name: 'Thứ 7',
     'Đơn hàng': 2390,
     'Lượt truy cập': 3800,
     amt: 2500,
   },
   {
-    name: 'Sun',
+    name: 'CN',
     'Đơn hàng': 3490,
     'Lượt truy cập': 4300,
     amt: 2100,
@@ -199,7 +199,8 @@ function DashBoard() {
         />
         <IconBellRinging />
         <Typography.HeadLine5>
-          Good moring, <span style={{ fontWeight: 'bold' }}>Admin</span>
+          Good moring,{' '}
+          <span style={{ fontWeight: 'bold' }}>Đoàn Mạnh Cường</span>
         </Typography.HeadLine5>
       </Flex>
 

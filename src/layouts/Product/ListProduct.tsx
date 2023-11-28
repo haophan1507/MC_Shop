@@ -7,6 +7,7 @@ import {
   Grid,
   HoverCard,
   Image,
+  Rating,
   Space,
   Stack,
   em,
@@ -49,13 +50,8 @@ import image29 from '../../assets/images/product-man/Rectangle 3245-18.png';
 import image30 from '../../assets/images/product-man/Rectangle 3245-19.png';
 import image31 from '../../assets/images/product-man/Rectangle 3245.png';
 
-import {
-  IconCheck,
-  IconChevronDown,
-  IconHeart,
-  IconShoppingBagPlus,
-} from '@tabler/icons-react';
-import { useHover, useMediaQuery } from '@mantine/hooks';
+import { IconCheck, IconChevronDown, IconHeart } from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 
 const ImageWoman = [
@@ -254,7 +250,6 @@ function ListProduct() {
 }
 
 const ProductItem = ({ item }: { item: any }) => {
-  const { hovered, ref } = useHover();
   const { name } = useParams();
   const navigate = useNavigate();
 
@@ -265,79 +260,69 @@ const ProductItem = ({ item }: { item: any }) => {
         border: '1px solid #CBCBCB',
         cursor: 'pointer',
       }}
-      ref={ref}
-      onClick={() => navigate(`/product/${name}/product-detail`)}
     >
-      {hovered ? (
-        <Center
-          pos="absolute"
-          style={{
-            zIndex: 2,
-          }}
-        >
-          <Stack bg={Colors.LightGrey} pb={24}>
-            <Image src={item} />
-            <Typography.HeadLine5 ta="center">
-              LV ON THE GO PM PREMIUM
-            </Typography.HeadLine5>
-            <Typography.HeadLine4 ta="center">
-              62.000.000 VND
-            </Typography.HeadLine4>
-            <Button
-              variant="filled"
-              bg={Colors.Brown}
-              size="md"
-              radius="xs"
-              rightSection={<IconShoppingBagPlus />}
-              maw={200}
-              style={{
-                alignSelf: 'center',
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                notifications.show({
-                  icon: (
-                    <IconCheck style={{ width: rem(20), height: rem(20) }} />
-                  ),
-                  color: Colors.Brown,
-                  autoClose: 1000,
-                  message: (
-                    <Stack my={16}>
-                      <Typography.HeadLine5>
-                        Sản phẩm đã được thêm vào Giỏ hàng
-                      </Typography.HeadLine5>
-                    </Stack>
-                  ),
-                });
-              }}
-            >
-              <Typography.Body2 c={Colors.White}>
-                Thêm vào giỏ hàng
-              </Typography.Body2>
-            </Button>
-          </Stack>
-          <IconHeart
-            stroke={1}
-            style={{
-              position: 'absolute',
-              top: 24,
-              right: 48,
+      <Image
+        src={item}
+        onClick={() => navigate(`/product/${name}/product-detail`)}
+      />
+      <Stack
+        p={24}
+        style={{
+          border: '1px solid #CBCBCB',
+          cursor: 'pointer',
+        }}
+      >
+        <Typography.HeadLine5>LV ON THE GO PM PREMIUM</Typography.HeadLine5>
+        <Typography.HeadLine4>62.000.000 VND</Typography.HeadLine4>
+        <Typography.Body2>còn hàng 6 sản phẩm</Typography.Body2>
+        <Flex align="center" gap={8}>
+          <Rating value={5} color={Colors.Brown} />
+          <Typography.HeadLine5>(12)</Typography.HeadLine5>
+        </Flex>
+        <Flex gap={24}>
+          <Button
+            variant="outline"
+            color={Colors.Brown}
+            radius="xs"
+            style={{ flex: 1 }}
+            onClick={() => {
+              notifications.show({
+                icon: <IconCheck style={{ width: rem(20), height: rem(20) }} />,
+                color: Colors.Brown,
+                autoClose: 1000,
+                message: (
+                  <Stack my={16}>
+                    <Typography.HeadLine5>
+                      Sản phẩm đã được thêm vào Giỏ hàng
+                    </Typography.HeadLine5>
+                  </Stack>
+                ),
+              });
             }}
-          />
-        </Center>
-      ) : (
-        <Center>
-          <Image src={item} />
-          <IconHeart
-            stroke={1}
-            style={{
-              position: 'absolute',
-              top: 24,
-              right: 48,
+          >
+            <Typography.Body1 c={Colors.Brown}>Thêm vào giỏ</Typography.Body1>
+          </Button>
+          <Button
+            variant="filled"
+            color={Colors.Brown}
+            radius="xs"
+            style={{ flex: 1 }}
+            onClick={() => {
+              navigate('/product/payment');
             }}
-          />
-        </Center>
-      )}
+          >
+            <Typography.Body1 c={Colors.White}>Mua ngay</Typography.Body1>
+          </Button>
+        </Flex>
+      </Stack>
+      <IconHeart
+        stroke={1}
+        style={{
+          position: 'absolute',
+          top: 24,
+          right: 48,
+        }}
+      />
     </Space>
   );
 };

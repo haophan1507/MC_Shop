@@ -22,6 +22,11 @@ function index() {
 
   const mockdata = [
     {
+      label: 'Đơn hàng',
+      icon: IconNotes,
+      to: '/admin/order',
+    },
+    {
       label: 'Dashboard',
       icon: IconBrandGoogleAnalytics,
       to: '/admin/dashboard',
@@ -38,11 +43,6 @@ function index() {
         { label: 'Túi đeo vai', link: '/', to: '/admin/category' },
       ],
       to: '/admin',
-    },
-    {
-      label: 'Đơn hàng',
-      icon: IconNotes,
-      to: '/admin/order',
     },
     { label: 'Blog', icon: IconNote, to: '/admin/blog' },
     { label: 'Tài khoản', icon: IconUserPentagon, to: '/admin/user' },

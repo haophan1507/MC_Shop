@@ -195,7 +195,7 @@ function Footer() {
                 </Typography.Body2>
               </Stack>
             </Flex>
-            <Divider mt={80} color={Colors.Black} />
+            <Divider mt={40} color={Colors.Black} />
             <Flex justify="space-between" mt={32}>
               <Flex gap={24}>
                 <Typography.Body2>

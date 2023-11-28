@@ -172,10 +172,10 @@ function ListBlog() {
             </Flex>
           </Stack>
 
-          <Flex mt={64} w="100%" wrap="wrap" justify="space-between">
+          <Flex mt={40} w="100%" wrap="wrap" justify="space-between">
             {list1.map((item) => {
               return (
-                <Stack key={item.title} w="45%" mb={64}>
+                <Stack key={item.title} w="45%" mb={40}>
                   <Image src={item.image} />
 
                   <Flex gap={8}>
@@ -210,7 +210,7 @@ function ListBlog() {
       </Flex>
 
       {isMobile ? (
-        <Stack mb={60}>
+        <Stack mb={40}>
           <Typography.HeadLine4>
             Đăng ký cho bản tin của chúng tôi
           </Typography.HeadLine4>
@@ -236,7 +236,7 @@ function ListBlog() {
           </Typography.Body1>
         </Stack>
       ) : (
-        <Flex justify="space-between" my={60}>
+        <Flex justify="space-between" my={40}>
           <Stack maw={400}>
             <Typography.HeadLine3>
               Đăng ký cho bản tin của chúng tôi

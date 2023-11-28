@@ -122,7 +122,7 @@ function index() {
         </Stack>
       </Flex>
 
-      <Typography.HeadLine2 ta="center" mt={isMobile ? 60 : 140}>
+      <Typography.HeadLine2 ta="center" mt={isMobile ? 40 : 96}>
         - LIÊN HỆ -
       </Typography.HeadLine2>
       <Center>

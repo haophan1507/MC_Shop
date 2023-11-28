@@ -13,6 +13,7 @@ import {
   Image,
   List,
   Pagination,
+  Rating,
   Space,
   Stack,
   UnstyledButton,
@@ -45,6 +46,7 @@ import image8 from '../../assets/images/product detail/Image-1.png';
 import image9 from '../../assets/images/product detail/Image-2.png';
 import { useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
   { title: 'Sản phẩm' },
@@ -57,6 +59,8 @@ const items = [
 const listImage = [image1, image2, image3, image4, image5, image6];
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
+
   const [embla, setEmbla] = useState<Embla | null>(null);
   const [number, setNumber] = useState(1);
 
@@ -239,10 +243,11 @@ const ProductDetail = () => {
               <Stack maw={380}>
                 <Typography.HeadLine4>LV ON THE GO PM</Typography.HeadLine4>
                 <Typography.Body1>
-                  Cặp túi OnTheGo PM đến từ sự hỗn hợp của vải Monogram và
-                  Monogram Reverse với hình mẫu để làm xu hướng thời trang, cả
-                  hai thời trang và thực tế, là bạn đồng hành hàng ngày tuyệt
-                  vời.
+                  Túi xách Excursion PM siêu dễ thương, được làm từ canvas
+                  Monogram và làm bọc lề bằng da. Thiết kế ông lấy ý tưởng từ
+                  thế giới leo núi. Ở lớp bên trong kín bằng buc trượt điều
+                  chỉnh và có hai túi với dây buc. Một ống dây, vừa làm nên
+                  phong cách thời trang, cũng vừa gọn gàng trong việc di chuyển.
                 </Typography.Body1>
                 <Typography.HeadLine3>62.200.000 VNĐ</Typography.HeadLine3>
                 <Flex align="center" gap={10}>
@@ -291,17 +296,12 @@ const ProductDetail = () => {
                   </Flex>
                 </Flex>
 
-                <Flex align="center" gap={40} mt={40}>
+                <Flex gap={24}>
                   <Button
-                    variant="filled"
-                    bg={Colors.Black}
-                    size="md"
+                    variant="outline"
+                    color={Colors.Brown}
                     radius="xs"
-                    rightSection={<IconShoppingBagPlus />}
-                    maw={200}
-                    style={{
-                      alignSelf: 'center',
-                    }}
+                    w={210}
                     onClick={() => {
                       notifications.show({
                         icon: (
@@ -321,12 +321,23 @@ const ProductDetail = () => {
                       });
                     }}
                   >
-                    <Typography.Body2 c={Colors.White}>
+                    <Typography.Body1 c={Colors.Brown}>
                       Thêm vào giỏ hàng
-                    </Typography.Body2>
+                    </Typography.Body1>
                   </Button>
-
-                  <IconHeart />
+                  <Button
+                    variant="filled"
+                    color={Colors.Brown}
+                    radius="xs"
+                    w={210}
+                    onClick={() => {
+                      navigate('/product/payment');
+                    }}
+                  >
+                    <Typography.Body1 c={Colors.White}>
+                      Mua ngay
+                    </Typography.Body1>
+                  </Button>
                 </Flex>
               </Stack>
             </Flex>
@@ -433,7 +444,7 @@ const ProductDetail = () => {
           })}
 
         <Center mt={32} mb={120}>
-          <Pagination total={4} withControls={false} />
+          <Pagination total={4} withControls={false} color={Colors.Brown} />
         </Center>
       </Container>
 
@@ -510,45 +521,58 @@ const ProductDetail = () => {
                   </Card.Section>
 
                   <Stack pb={24} mt={12}>
-                    <Typography.HeadLine5 ta="center">
+                    <Typography.HeadLine5>
                       LV ON THE GO PM PREMIUM
                     </Typography.HeadLine5>
-                    <Typography.HeadLine4 ta="center">
-                      62.000.000 VND
-                    </Typography.HeadLine4>
-                    <Button
-                      variant="filled"
-                      bg={Colors.Brown}
-                      size="md"
-                      radius="xs"
-                      rightSection={<IconShoppingBagPlus />}
-                      maw={200}
-                      style={{
-                        alignSelf: 'center',
-                      }}
-                      onClick={() => {
-                        notifications.show({
-                          icon: (
-                            <IconCheck
-                              style={{ width: rem(20), height: rem(20) }}
-                            />
-                          ),
-                          color: Colors.Brown,
-                          autoClose: 1000,
-                          message: (
-                            <Stack my={16}>
-                              <Typography.HeadLine5>
-                                Sản phẩm đã được thêm vào Giỏ hàng
-                              </Typography.HeadLine5>
-                            </Stack>
-                          ),
-                        });
-                      }}
-                    >
-                      <Typography.Body2 c={Colors.White}>
-                        Thêm vào giỏ hàng
-                      </Typography.Body2>
-                    </Button>
+                    <Typography.HeadLine4>62.000.000 VND</Typography.HeadLine4>
+                    <Typography.Body2>còn hàng 6 sản phẩm</Typography.Body2>
+                    <Flex align="center" gap={8}>
+                      <Rating value={5} color={Colors.Brown} />
+                      <Typography.HeadLine5>(12)</Typography.HeadLine5>
+                    </Flex>
+                    <Flex gap={24}>
+                      <Button
+                        variant="outline"
+                        color={Colors.Brown}
+                        radius="xs"
+                        style={{ flex: 1 }}
+                        onClick={() => {
+                          notifications.show({
+                            icon: (
+                              <IconCheck
+                                style={{ width: rem(20), height: rem(20) }}
+                              />
+                            ),
+                            color: Colors.Brown,
+                            autoClose: 1000,
+                            message: (
+                              <Stack my={16}>
+                                <Typography.HeadLine5>
+                                  Sản phẩm đã được thêm vào Giỏ hàng
+                                </Typography.HeadLine5>
+                              </Stack>
+                            ),
+                          });
+                        }}
+                      >
+                        <Typography.Body1 c={Colors.Brown}>
+                          Thêm vào giỏ
+                        </Typography.Body1>
+                      </Button>
+                      <Button
+                        variant="filled"
+                        color={Colors.Brown}
+                        radius="xs"
+                        style={{ flex: 1 }}
+                        onClick={() => {
+                          navigate('/product/payment');
+                        }}
+                      >
+                        <Typography.Body1 c={Colors.White}>
+                          Mua ngay
+                        </Typography.Body1>
+                      </Button>
+                    </Flex>
                   </Stack>
                 </Card>
               ))}

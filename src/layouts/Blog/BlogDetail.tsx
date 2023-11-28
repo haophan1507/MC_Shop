@@ -87,7 +87,7 @@ function BlogDetail() {
         Xuân-Hè nữ 2024
       </Typography.HeadLine2>
 
-      <Image src={image} mt={50} mb={80} />
+      <Image src={image} mt={50} mb={60} />
 
       <Typography.HeadLine2 ta="center">
         Chương trình diễn Xuân-Hè 2024
@@ -132,7 +132,7 @@ function BlogDetail() {
         </Typography.Body1>
       </Center>
 
-      <Grid my={64}>
+      <Grid my={40}>
         <Grid.Col span={8}>
           <Image src={image7} />
         </Grid.Col>
@@ -147,7 +147,7 @@ function BlogDetail() {
         </Grid.Col>
       </Grid>
 
-      <Box my={64}>
+      <Box my={40}>
         <Center>
           <Typography.HeadLine5>Chia sẻ bài viết này:</Typography.HeadLine5>
         </Center>
@@ -161,13 +161,13 @@ function BlogDetail() {
         </Center>
       </Box>
 
-      <Box my={64}>
+      <Box my={80}>
         <Typography.HeadLine2>Bài đăng mới nhất</Typography.HeadLine2>
         <Typography.Body1>
           Cùng xem lại các blog mà MC đã cho ra mắt gần đây
         </Typography.Body1>
 
-        <Grid my={64} w="100%">
+        <Grid my={40} w="100%">
           {list1.map((item) => {
             return (
               <Grid.Col key={item.title} span={isMobile ? 12 : 4}>
