@@ -95,7 +95,7 @@ function Category() {
                 </Typography.HeadLine4>
                 <Flex justify="space-between">
                   <UnstyledButton
-                    onClick={() => navigate('/admin/category/create')}
+                    onClick={() => navigate('/admin/category/create/1')}
                   >
                     <Typography.Body1>Sửa</Typography.Body1>
                   </UnstyledButton>

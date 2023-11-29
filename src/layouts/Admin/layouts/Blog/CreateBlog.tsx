@@ -11,11 +11,13 @@ import {
 } from '@mantine/core';
 import { IconSearch, IconBellRinging } from '@tabler/icons-react';
 import { Typography } from '../../../../common/components/Typography';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Colors from '../../../../common/components/Colors';
 
 function CreateBlog() {
   const navigate = useNavigate();
+  const { id } = useParams();
+
   return (
     <Stack gap={32} m={32}>
       <Flex gap={24} align="center">
@@ -37,7 +39,7 @@ function CreateBlog() {
       <Flex>
         <Typography.HeadLine3 c={Colors.Grey1}>Blog /</Typography.HeadLine3>
         <Typography.HeadLine3>
-          Chương trình triển lãm trang phục Xuân-Hè nữ 2024
+          {id ? 'Sửa bài viết' : 'Thêm bài viết'}
         </Typography.HeadLine3>
       </Flex>
 

@@ -81,7 +81,7 @@ function Blog() {
                 </Typography.Body2>
                 <Flex justify="center" gap={108}>
                   <UnstyledButton
-                    onClick={() => navigate('/admin/blog/create')}
+                    onClick={() => navigate('/admin/blog/create/1')}
                   >
                     <Typography.Body1>Sửa</Typography.Body1>
                   </UnstyledButton>

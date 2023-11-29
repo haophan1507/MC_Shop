@@ -21,11 +21,13 @@ function Admin() {
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/category" element={<Category />} />
           <Route path="/category/create" element={<CreateCategory />} />
+          <Route path="/category/create/:id" element={<CreateCategory />} />
           <Route path="/order" element={<Order />} />
           <Route path="/review" element={<Review />} />
           <Route path="/user" element={<User />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/create" element={<CreateBlog />} />
+          <Route path="/blog/create/:id" element={<CreateBlog />} />
         </Route>
       )}
       <Route path="/login" element={<Login />} />

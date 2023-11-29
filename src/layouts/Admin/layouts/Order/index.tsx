@@ -25,6 +25,7 @@ import { Typography } from '../../../../common/components/Typography';
 
 import image1 from '../../../../assets/images/homepage/image 21-1.png';
 import image2 from '../../../../assets/images/homepage/image 23-1.png';
+import { useState } from 'react';
 
 const list = [
   {
@@ -53,7 +54,17 @@ const list = [
   },
 ];
 
+const title = {
+  1: 'Đơn hàng đã được đặt',
+  2: 'Đơn hàng đã được đặt',
+  3: 'Đã gửi hàng đến bưu cục',
+  4: 'Đơn hàng đã giao đến bạn',
+  5: 'Đơn hàng đã bị huỷ',
+};
+
 function Order() {
+  const [status, setStatus] = useState<keyof typeof title>(1);
+
   return (
     <Stack gap={32} m={32}>
       <Flex gap={24} align="center">
@@ -93,12 +104,26 @@ function Order() {
             span={1}
             style={{
               borderRight: '1px solid black',
+              cursor: 'pointer',
             }}
+            onClick={() => setStatus(1)}
           >
-            <Typography.Body1 c={Colors.Grey1} ta="center" mb={8}>
+            <Typography.Body1
+              c={Colors.Grey1}
+              ta="center"
+              mb={8}
+              fz={status === 1 ? 22 : 16}
+              fw={status === 1 ? 'bold' : 'normal'}
+            >
               Chờ xác nhận
             </Typography.Body1>
-            <Typography.Body1 ta="center">(15)</Typography.Body1>
+            <Typography.Body1
+              ta="center"
+              fz={status === 1 ? 22 : 16}
+              fw={status === 1 ? 'bold' : 'normal'}
+            >
+              (15)
+            </Typography.Body1>
             <Divider orientation="vertical" />
           </Grid.Col>
 
@@ -106,40 +131,83 @@ function Order() {
             span={1}
             style={{
               borderRight: '1px solid black',
+              cursor: 'pointer',
             }}
+            onClick={() => setStatus(2)}
           >
-            <Typography.Body1 c={Colors.Grey1} ta="center" mb={8}>
+            <Typography.Body1
+              c={Colors.Grey1}
+              ta="center"
+              mb={8}
+              fz={status === 2 ? 22 : 16}
+            >
               Chờ gửi hàng
             </Typography.Body1>
-            <Typography.Body1 ta="center">(34)</Typography.Body1>
+            <Typography.Body1 ta="center" fw={status === 2 ? 'bold' : 'normal'}>
+              (34)
+            </Typography.Body1>
           </Grid.Col>
+
           <Grid.Col
             span={1}
             style={{
               borderRight: '1px solid black',
+              cursor: 'pointer',
             }}
+            onClick={() => setStatus(3)}
           >
-            <Typography.Body1 c={Colors.Grey1} ta="center" mb={8}>
+            <Typography.Body1
+              c={Colors.Grey1}
+              ta="center"
+              mb={8}
+              fz={status === 3 ? 22 : 16}
+            >
               Đang giao
             </Typography.Body1>
-            <Typography.Body1 ta="center">(34)</Typography.Body1>
+            <Typography.Body1 ta="center" fw={status === 3 ? 'bold' : 'normal'}>
+              (34)
+            </Typography.Body1>
           </Grid.Col>
+
           <Grid.Col
             span={1}
             style={{
               borderRight: '1px solid black',
+              cursor: 'pointer',
             }}
+            onClick={() => setStatus(4)}
           >
-            <Typography.Body1 c={Colors.Grey1} ta="center" mb={8}>
+            <Typography.Body1
+              c={Colors.Grey1}
+              ta="center"
+              mb={8}
+              fz={status === 4 ? 22 : 16}
+            >
               Đã giao
             </Typography.Body1>
-            <Typography.Body1 ta="center">(240)</Typography.Body1>
+            <Typography.Body1 ta="center" fw={status === 4 ? 'bold' : 'normal'}>
+              (240)
+            </Typography.Body1>
           </Grid.Col>
-          <Grid.Col span={1}>
-            <Typography.Body1 c={Colors.Grey1} ta="center" mb={8}>
+
+          <Grid.Col
+            span={1}
+            style={{
+              cursor: 'pointer',
+            }}
+            onClick={() => setStatus(5)}
+          >
+            <Typography.Body1
+              c={Colors.Grey1}
+              ta="center"
+              mb={8}
+              fz={status === 5 ? 22 : 16}
+            >
               Đã huỷ
             </Typography.Body1>
-            <Typography.Body1 ta="center">(24)</Typography.Body1>
+            <Typography.Body1 ta="center" fw={status === 5 ? 'bold' : 'normal'}>
+              (24)
+            </Typography.Body1>
           </Grid.Col>
         </Grid>
       </Paper>
@@ -155,7 +223,7 @@ function Order() {
                 </Typography.Body2>
                 <Divider />
                 <Typography.Body2 c={Colors.Brown}>
-                  Đơn hàng đã được đặt
+                  {title[status]}
                 </Typography.Body2>
                 <Divider />
                 <Stack>

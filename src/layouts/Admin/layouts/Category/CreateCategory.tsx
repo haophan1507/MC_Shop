@@ -12,10 +12,11 @@ import {
 import { IconSearch, IconBellRinging } from '@tabler/icons-react';
 import Colors from '../../../../common/components/Colors';
 import { Typography } from '../../../../common/components/Typography';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CreateCategory = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   return (
     <Stack gap={32} m={32}>
@@ -39,7 +40,9 @@ const CreateCategory = () => {
         <Typography.HeadLine3 c={Colors.Grey1}>
           Các túi ví xách /
         </Typography.HeadLine3>
-        <Typography.HeadLine3>LV ON THE GO PM</Typography.HeadLine3>
+        <Typography.HeadLine3>
+          {id ? 'Sửa sản phẩm' : 'Thêm sản phẩm'}
+        </Typography.HeadLine3>
       </Flex>
 
       <Paper shadow="xs" p="xl">
