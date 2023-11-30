@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Box,
   Collapse,
   Container,
   Divider,
@@ -29,6 +30,8 @@ import { Typography } from '../common/components/Typography';
 import { useDisclosure, useLocalStorage, useMediaQuery } from '@mantine/hooks';
 import { useCallback } from 'react';
 
+import avatar from '../assets/images/avt.png';
+
 const Link = styled(NavLink)`
   text-decoration: none;
   color: ${Colors.Grey1};
@@ -57,6 +60,7 @@ function Headers() {
   const navigate = useNavigate();
 
   const [value, setValue] = useLocalStorage({ key: 'user' });
+  const [totalProduct] = useLocalStorage({ key: 'totalProduct' });
 
   const [opened, { open, close }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
@@ -249,12 +253,41 @@ function Headers() {
               </UnstyledButton>
 
               <UnstyledButton
+                pos="relative"
                 onClick={() => {
                   navigate('/product/cart');
                   close();
                 }}
               >
                 <IconShoppingBag />
+                {totalProduct && (
+                  <Box
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      position: 'absolute',
+                      top: -8,
+                      right: -8,
+                      height: 16,
+                      width: 16,
+                      borderRadius: 24,
+                      backgroundColor: Colors.Brown,
+                    }}
+                  >
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: 10,
+                        lineHeight: '12px',
+                        textAlign: 'center',
+                        color: Colors.White,
+                      }}
+                    >
+                      {totalProduct}
+                    </p>
+                  </Box>
+                )}
               </UnstyledButton>
 
               {value ? (
@@ -262,8 +295,9 @@ function Headers() {
                   <HoverCard.Target>
                     <UnstyledButton>
                       <Avatar
+                        size="md"
                         variant="transparent"
-                        src={null}
+                        src={avatar}
                         alt="no image here"
                         color={Colors.Black}
                       />

@@ -20,7 +20,7 @@ import {
   IconChevronRight,
 } from '@tabler/icons-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useMediaQuery } from '@mantine/hooks';
+import { useLocalStorage, useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 
 import image1 from '../../assets/images/homepage/Image.png';
@@ -61,6 +61,10 @@ function index() {
   const navigate = useNavigate();
   const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
+  const [_totalProduct, setTotalProduct] = useLocalStorage({
+    key: 'totalProduct',
+  });
+
   return (
     <>
       <BannerHeader />
@@ -98,6 +102,9 @@ function index() {
                   radius="xs"
                   w={210}
                   onClick={() => {
+                    setTotalProduct((prev) =>
+                      prev ? (Number(prev) + 1).toString() : '1'.toString()
+                    );
                     notifications.show({
                       icon: (
                         <IconCheck

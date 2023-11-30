@@ -29,12 +29,16 @@ import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
 import image2 from '../../assets/images/homepage/image 23-1.png';
 import image3 from '../../assets/images/homepage/image 21-1.png';
 import image4 from '../../assets/images/product detail/Image-1.png';
-import { useMediaQuery } from '@mantine/hooks';
+import { useLocalStorage, useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 
 function Cart() {
   const navigate = useNavigate();
   const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
+
+  const [_totalProduct, setTotalProduct] = useLocalStorage({
+    key: 'totalProduct',
+  });
 
   return (
     <Container size="xl">
@@ -356,39 +360,52 @@ function Cart() {
                   <Typography.HeadLine4 ta="center">
                     62.000.000 VND
                   </Typography.HeadLine4>
-                  <Button
-                    variant="filled"
-                    bg={Colors.Brown}
-                    size="md"
-                    radius="xs"
-                    rightSection={<IconShoppingBagPlus />}
-                    maw={200}
-                    style={{
-                      alignSelf: 'center',
-                    }}
-                    onClick={() => {
-                      notifications.show({
-                        icon: (
-                          <IconCheck
-                            style={{ width: rem(20), height: rem(20) }}
-                          />
-                        ),
-                        color: Colors.Brown,
-                        autoClose: 1000,
-                        message: (
-                          <Stack my={16}>
-                            <Typography.HeadLine5>
-                              Sản phẩm đã được thêm vào Giỏ hàng
-                            </Typography.HeadLine5>
-                          </Stack>
-                        ),
-                      });
-                    }}
-                  >
-                    <Typography.Body2 c={Colors.White}>
-                      Thêm vào giỏ hàng
-                    </Typography.Body2>
-                  </Button>
+                  <Flex gap={24}>
+                    <Button
+                      variant="outline"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      onClick={() => {
+                        setTotalProduct((prev) =>
+                          prev ? (Number(prev) + 1).toString() : '1'.toString()
+                        );
+                        notifications.show({
+                          icon: (
+                            <IconCheck
+                              style={{ width: rem(20), height: rem(20) }}
+                            />
+                          ),
+                          color: Colors.Brown,
+                          autoClose: 1000,
+                          message: (
+                            <Stack my={16}>
+                              <Typography.HeadLine5>
+                                Sản phẩm đã được thêm vào Giỏ hàng
+                              </Typography.HeadLine5>
+                            </Stack>
+                          ),
+                        });
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.Brown}>
+                        Thêm vào giỏ
+                      </Typography.Body1>
+                    </Button>
+                    <Button
+                      variant="filled"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      onClick={() => {
+                        navigate('/product/payment');
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.White}>
+                        Mua ngay
+                      </Typography.Body1>
+                    </Button>
+                  </Flex>
                 </Stack>
               </Card>
             ))}

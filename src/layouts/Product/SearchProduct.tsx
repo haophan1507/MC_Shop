@@ -55,7 +55,7 @@ import {
   IconHeart,
   IconSearch,
 } from '@tabler/icons-react';
-import { useMediaQuery } from '@mantine/hooks';
+import { useLocalStorage, useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 
 const ImageWoman = [
@@ -267,6 +267,10 @@ const ProductItem = ({ item }: { item: any }) => {
   const { name } = useParams();
   const navigate = useNavigate();
 
+  const [_totalProduct, setTotalProduct] = useLocalStorage({
+    key: 'totalProduct',
+  });
+
   return (
     <Space
       pos="relative"
@@ -300,6 +304,9 @@ const ProductItem = ({ item }: { item: any }) => {
             radius="xs"
             style={{ flex: 1 }}
             onClick={() => {
+              setTotalProduct((prev) =>
+                prev ? (Number(prev) + 1).toString() : '1'.toString()
+              );
               notifications.show({
                 icon: <IconCheck style={{ width: rem(20), height: rem(20) }} />,
                 color: Colors.Brown,

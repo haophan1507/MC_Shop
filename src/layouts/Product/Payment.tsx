@@ -23,13 +23,17 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
-import { useMediaQuery } from '@mantine/hooks';
+import { useLocalStorage, useMediaQuery } from '@mantine/hooks';
 
 function Payment() {
   const navigate = useNavigate();
   const [value, setValue] = useState('radio-1');
 
   const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
+
+  const [_totalProduct, setTotalProduct] = useLocalStorage({
+    key: 'totalProduct',
+  });
 
   return (
     <Container size="xl">
@@ -182,7 +186,10 @@ function Payment() {
               color={Colors.Brown}
               radius="xs"
               w="80%"
-              onClick={() => navigate('/product/success')}
+              onClick={() => {
+                setTotalProduct('');
+                navigate('/product/success');
+              }}
             >
               <Typography.Body1 c={Colors.White}>Thanh toán</Typography.Body1>
             </Button>
