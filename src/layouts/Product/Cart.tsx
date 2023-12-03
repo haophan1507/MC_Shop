@@ -16,13 +16,7 @@ import {
 } from '@mantine/core';
 import { Typography } from '../../common/components/Typography';
 import Colors from '../../common/components/Colors';
-import {
-  IconCheck,
-  IconHeart,
-  IconMinus,
-  IconPlus,
-  IconShoppingBagPlus,
-} from '@tabler/icons-react';
+import { IconCheck, IconHeart, IconMinus, IconPlus } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 
 import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
