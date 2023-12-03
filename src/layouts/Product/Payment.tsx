@@ -20,10 +20,11 @@ import {
 import Colors from '../../common/components/Colors';
 import { Typography } from '../../common/components/Typography';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import image1 from '../../assets/images/product-woman/Rectangle 3244.png';
 import { useLocalStorage, useMediaQuery } from '@mantine/hooks';
+import { useForm } from '@mantine/form';
 
 function Payment() {
   const navigate = useNavigate();
@@ -31,9 +32,32 @@ function Payment() {
 
   const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
+  const [user] = useLocalStorage({ key: 'user' });
   const [_totalProduct, setTotalProduct] = useLocalStorage({
     key: 'totalProduct',
   });
+
+  const form = useForm({
+    initialValues: {
+      name: user ? 'JENNIE KIM' : '',
+      phone: user ? '84889629690' : '',
+      city: user ? 'Hà Nội' : '',
+      district: user ? 'Hoàng Mai' : '',
+      ward: user ? 'Hoàng Liệt' : '',
+      address: user ? 'Hoàng Liệt' : '',
+    },
+  });
+
+  useEffect(() => {
+    form.setValues({
+      name: user ? 'JENNIE KIM' : '',
+      phone: user ? '84889629690' : '',
+      city: user ? 'Hà Nội' : '',
+      district: user ? 'Hoàng Mai' : '',
+      ward: user ? 'Hoàng Liệt' : '',
+      address: user ? 'Hoàng Liệt' : '',
+    });
+  }, [user]);
 
   return (
     <Container size="xl">
@@ -52,27 +76,30 @@ function Payment() {
             </Typography.HeadLine4>
             <Stack gap={8}>
               <Typography.Body1>Họ tên *</Typography.Body1>
-              <TextInput size="md" value="JENNIE KIM" />
+              <TextInput size="md" {...form.getInputProps('name')} />
             </Stack>
             <Stack gap={8}>
               <Typography.Body1>Số điện thoại *</Typography.Body1>
-              <TextInput size="md" value="84889629690" />
+              <TextInput size="md" {...form.getInputProps('phone')} />
             </Stack>
             <Stack gap={8}>
               <Typography.Body1>Tỉnh/ Thành phố *</Typography.Body1>
-              <Select defaultValue="Hà Nội" data={['Hà Nội']} />
+              <Select data={['Hà Nội']} {...form.getInputProps('city')} />
             </Stack>
             <Stack gap={8}>
               <Typography.Body1>Quận/ Huyện *</Typography.Body1>
-              <Select defaultValue="Hoàng Mai" data={['Hoàng Mai']} />
+              <Select
+                data={['Hoàng Mai']}
+                {...form.getInputProps('district')}
+              />
             </Stack>
             <Stack gap={8}>
               <Typography.Body1>Phường/ Xã *</Typography.Body1>
-              <Select defaultValue="Hoàng Liệt" data={['Hoàng Liệt']} />
+              <Select data={['Hoàng Liệt']} {...form.getInputProps('ward')} />
             </Stack>
             <Stack gap={8}>
               <Typography.Body1>Địa chỉ cụ thể *</Typography.Body1>
-              <TextInput size="md" value="Hoàng Liệt" />
+              <TextInput size="md" {...form.getInputProps('address')} />
             </Stack>
             <Stack gap={8}>
               <Typography.Body1>Ghi chú</Typography.Body1>
