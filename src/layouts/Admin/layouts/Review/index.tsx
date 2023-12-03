@@ -43,7 +43,6 @@ function Review() {
         />
         <IconBellRinging />
         <Typography.HeadLine5>
-          Good moring,{' '}
           <span style={{ fontWeight: 'bold' }}>Đoàn Mạnh Cường</span>
         </Typography.HeadLine5>
       </Flex>

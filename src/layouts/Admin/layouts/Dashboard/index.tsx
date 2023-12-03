@@ -42,7 +42,7 @@ function index() {
         { label: 'Túi xách tay trên ', link: '/', to: '/admin/category' },
         { label: 'Túi đeo vai', link: '/', to: '/admin/category' },
       ],
-      to: '/admin',
+      to: '/admin/category',
     },
     { label: 'Blog', icon: IconNote, to: '/admin/blog' },
     { label: 'Tài khoản', icon: IconUserPentagon, to: '/admin/user' },
@@ -50,7 +50,7 @@ function index() {
     {
       label: 'Đăng xuất',
       icon: IconLogout,
-      to: '/admin',
+      to: '/admin/logout',
       onClick: () => setValue(''),
     },
   ];

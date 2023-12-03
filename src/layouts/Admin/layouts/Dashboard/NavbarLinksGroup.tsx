@@ -11,7 +11,7 @@ import {
 import { IconCalendarStats, IconChevronRight } from '@tabler/icons-react';
 import classes from './NavbarLinksGroup.module.css';
 import Colors from '../../../../common/components/Colors';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface LinksGroupProps {
   icon: React.FC<any>;
@@ -33,6 +33,7 @@ export function LinksGroup({
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const items = (hasLinks ? links : []).map((link) => (
     <Text<'a'>
@@ -48,7 +49,7 @@ export function LinksGroup({
       {link.label}
     </Text>
   ));
-
+  console.log({ to, pathname }, pathname.includes(to));
   return (
     <>
       <UnstyledButton
@@ -71,7 +72,16 @@ export function LinksGroup({
                 style={{ width: rem(18), height: rem(18), color: Colors.Brown }}
               />
             </ThemeIcon>
-            <Box ml="md">{label}</Box>
+            <Box
+              ml="md"
+              style={
+                pathname.includes(to)
+                  ? { color: Colors.Brown, fontWeight: 'bold' }
+                  : {}
+              }
+            >
+              {label}
+            </Box>
           </Box>
           {hasLinks && (
             <IconChevronRight

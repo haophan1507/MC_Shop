@@ -78,7 +78,6 @@ function Order() {
         />
         <IconBellRinging />
         <Typography.HeadLine5>
-          Good moring,{' '}
           <span style={{ fontWeight: 'bold' }}>Đoàn Mạnh Cường</span>
         </Typography.HeadLine5>
       </Flex>
@@ -330,7 +329,7 @@ function Order() {
                         padding: 8,
                       }}
                     >
-                      <IconCheck color={Colors.LightBrown} />
+                      <IconX color={Colors.LightBrown} />
                     </UnstyledButton>
 
                     <UnstyledButton
@@ -339,7 +338,7 @@ function Order() {
                         padding: 8,
                       }}
                     >
-                      <IconX color={Colors.Brown} />
+                      <IconCheck color={Colors.Brown} />
                     </UnstyledButton>
                   </Flex>
                 </Flex>
