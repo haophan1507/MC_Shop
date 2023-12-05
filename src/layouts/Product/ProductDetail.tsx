@@ -32,7 +32,6 @@ import {
   IconMinus,
   IconPlus,
   IconShare,
-  IconShoppingBagPlus,
   IconStarFilled,
 } from '@tabler/icons-react';
 
