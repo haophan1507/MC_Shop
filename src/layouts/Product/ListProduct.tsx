@@ -252,6 +252,7 @@ function ListProduct() {
 const ProductItem = ({ item }: { item: any }) => {
   const { name } = useParams();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery(`(max-width: ${em(576)})`);
 
   const [_totalProduct, setTotalProduct] = useLocalStorage({
     key: 'totalProduct',
@@ -270,7 +271,7 @@ const ProductItem = ({ item }: { item: any }) => {
         onClick={() => navigate(`/product/${name}/product-detail`)}
       />
       <Stack
-        p={24}
+        p={isMobile ? 12 : 24}
         style={{
           border: '1px solid #CBCBCB',
           cursor: 'pointer',
@@ -283,51 +284,98 @@ const ProductItem = ({ item }: { item: any }) => {
           <Rating value={5} color={Colors.Brown} />
           <Typography.HeadLine5>(12)</Typography.HeadLine5>
         </Flex>
-        <Flex gap={24}>
-          <Button
-            variant="outline"
-            color={Colors.Brown}
-            radius="xs"
-            style={{ flex: 1 }}
-            onClick={() => {
-              setTotalProduct((prev) =>
-                prev ? (Number(prev) + 1).toString() : '1'.toString()
-              );
-              notifications.show({
-                icon: <IconCheck style={{ width: rem(20), height: rem(20) }} />,
-                color: Colors.Brown,
-                autoClose: 1000,
-                message: (
-                  <Stack my={16}>
-                    <Typography.HeadLine5>
-                      Sản phẩm đã được thêm vào Giỏ hàng
-                    </Typography.HeadLine5>
-                  </Stack>
-                ),
-              });
-            }}
-          >
-            <Typography.Body1 c={Colors.Brown}>Thêm vào giỏ</Typography.Body1>
-          </Button>
-          <Button
-            variant="filled"
-            color={Colors.Brown}
-            radius="xs"
-            style={{ flex: 1 }}
-            onClick={() => {
-              navigate('/product/payment');
-            }}
-          >
-            <Typography.Body1 c={Colors.White}>Mua ngay</Typography.Body1>
-          </Button>
-        </Flex>
+        {isMobile ? (
+          <Stack gap={'sm'}>
+            <Button
+              variant="outline"
+              color={Colors.Brown}
+              radius="xs"
+              style={{ flex: 1 }}
+              p={4}
+              onClick={() => {
+                setTotalProduct((prev) =>
+                  prev ? (Number(prev) + 1).toString() : '1'.toString()
+                );
+                notifications.show({
+                  icon: (
+                    <IconCheck style={{ width: rem(20), height: rem(20) }} />
+                  ),
+                  color: Colors.Brown,
+                  autoClose: 1000,
+                  message: (
+                    <Stack my={16}>
+                      <Typography.HeadLine5>
+                        Sản phẩm đã được thêm vào Giỏ hàng
+                      </Typography.HeadLine5>
+                    </Stack>
+                  ),
+                });
+              }}
+            >
+              <Typography.Body1 c={Colors.Brown}>Thêm vào giỏ</Typography.Body1>
+            </Button>
+            <Button
+              variant="filled"
+              color={Colors.Brown}
+              radius="xs"
+              style={{ flex: 1 }}
+              p={4}
+              onClick={() => {
+                navigate('/product/payment');
+              }}
+            >
+              <Typography.Body1 c={Colors.White}>Mua ngay</Typography.Body1>
+            </Button>
+          </Stack>
+        ) : (
+          <Flex gap={24}>
+            <Button
+              variant="outline"
+              color={Colors.Brown}
+              radius="xs"
+              style={{ flex: 1 }}
+              onClick={() => {
+                setTotalProduct((prev) =>
+                  prev ? (Number(prev) + 1).toString() : '1'.toString()
+                );
+                notifications.show({
+                  icon: (
+                    <IconCheck style={{ width: rem(20), height: rem(20) }} />
+                  ),
+                  color: Colors.Brown,
+                  autoClose: 1000,
+                  message: (
+                    <Stack my={16}>
+                      <Typography.HeadLine5>
+                        Sản phẩm đã được thêm vào Giỏ hàng
+                      </Typography.HeadLine5>
+                    </Stack>
+                  ),
+                });
+              }}
+            >
+              <Typography.Body1 c={Colors.Brown}>Thêm vào giỏ</Typography.Body1>
+            </Button>
+            <Button
+              variant="filled"
+              color={Colors.Brown}
+              radius="xs"
+              style={{ flex: 1 }}
+              onClick={() => {
+                navigate('/product/payment');
+              }}
+            >
+              <Typography.Body1 c={Colors.White}>Mua ngay</Typography.Body1>
+            </Button>
+          </Flex>
+        )}
       </Stack>
       <IconHeart
         stroke={1}
         style={{
           position: 'absolute',
           top: 24,
-          right: 48,
+          right: isMobile ? 24 : 48,
         }}
       />
     </Space>

@@ -95,12 +95,12 @@ function index() {
               <Typography.HeadLine3 fz={36} fw={600} my={36}>
                 62.000.000 VNĐ
               </Typography.HeadLine3>
-              <Flex gap={24}>
+              <Flex gap={isMobile ? 12 : 24}>
                 <Button
                   variant="outline"
                   color={Colors.Brown}
                   radius="xs"
-                  w={210}
+                  style={isMobile ? { flex: 1 } : { width: 210 }}
                   onClick={() => {
                     setTotalProduct((prev) =>
                       prev ? (Number(prev) + 1).toString() : '1'.toString()
@@ -131,10 +131,10 @@ function index() {
                   variant="filled"
                   color={Colors.Brown}
                   radius="xs"
-                  w={210}
                   onClick={() => {
                     navigate('/product/payment');
                   }}
+                  style={isMobile ? { flex: 1 } : { width: 210 }}
                 >
                   <Typography.Body1 c={Colors.White}>Mua ngay</Typography.Body1>
                 </Button>

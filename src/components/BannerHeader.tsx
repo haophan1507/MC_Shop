@@ -59,6 +59,7 @@ function BannerHeader() {
       fluid
       style={{
         backgroundColor: Colors.LightGrey,
+        overflow: 'hidden',
       }}
     >
       {isMobile ? (
@@ -71,7 +72,7 @@ function BannerHeader() {
               }}
             >
               <Space
-                w="100%"
+                w="200%"
                 h="100%"
                 style={{
                   position: 'absolute',
@@ -86,7 +87,12 @@ function BannerHeader() {
                   zIndex: 2,
                 }}
               >
-                <Typography.HeadLine1 c={Colors.White} py={14} maw={550}>
+                <Typography.HeadLine1
+                  c={Colors.White}
+                  py={14}
+                  maw={550}
+                  ta={'center'}
+                >
                   {MODE_BANNER[modeBanner].title}
                 </Typography.HeadLine1>
               </Space>

@@ -9,6 +9,7 @@ import {
   Grid,
   Image,
   Input,
+  Rating,
   Space,
   Stack,
   em,
@@ -289,17 +290,129 @@ function Cart() {
                 cursor: 'pointer',
               }}
             >
-              <Center>
-                <Image src={image2} />
-                <IconHeart
-                  stroke={1}
-                  style={{
-                    position: 'absolute',
-                    top: 24,
-                    right: 24,
-                  }}
-                />
-              </Center>
+              <Image src={image2} />
+              <Stack
+                p={isMobile ? 12 : 24}
+                style={{
+                  border: '1px solid #CBCBCB',
+                  cursor: 'pointer',
+                }}
+              >
+                <Typography.HeadLine5>
+                  LV ON THE GO PM PREMIUM
+                </Typography.HeadLine5>
+                <Typography.HeadLine4>62.000.000 VND</Typography.HeadLine4>
+                <Typography.Body2>còn hàng 6 sản phẩm</Typography.Body2>
+                <Flex align="center" gap={8}>
+                  <Rating value={5} color={Colors.Brown} />
+                  <Typography.HeadLine5>(12)</Typography.HeadLine5>
+                </Flex>
+                {isMobile ? (
+                  <Stack gap={'sm'}>
+                    <Button
+                      variant="outline"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      p={4}
+                      onClick={() => {
+                        setTotalProduct((prev) =>
+                          prev ? (Number(prev) + 1).toString() : '1'.toString()
+                        );
+                        notifications.show({
+                          icon: (
+                            <IconCheck
+                              style={{ width: rem(20), height: rem(20) }}
+                            />
+                          ),
+                          color: Colors.Brown,
+                          autoClose: 1000,
+                          message: (
+                            <Stack my={16}>
+                              <Typography.HeadLine5>
+                                Sản phẩm đã được thêm vào Giỏ hàng
+                              </Typography.HeadLine5>
+                            </Stack>
+                          ),
+                        });
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.Brown}>
+                        Thêm vào giỏ
+                      </Typography.Body1>
+                    </Button>
+                    <Button
+                      variant="filled"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      p={4}
+                      onClick={() => {
+                        navigate('/product/payment');
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.White}>
+                        Mua ngay
+                      </Typography.Body1>
+                    </Button>
+                  </Stack>
+                ) : (
+                  <Flex gap={24}>
+                    <Button
+                      variant="outline"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      onClick={() => {
+                        setTotalProduct((prev) =>
+                          prev ? (Number(prev) + 1).toString() : '1'.toString()
+                        );
+                        notifications.show({
+                          icon: (
+                            <IconCheck
+                              style={{ width: rem(20), height: rem(20) }}
+                            />
+                          ),
+                          color: Colors.Brown,
+                          autoClose: 1000,
+                          message: (
+                            <Stack my={16}>
+                              <Typography.HeadLine5>
+                                Sản phẩm đã được thêm vào Giỏ hàng
+                              </Typography.HeadLine5>
+                            </Stack>
+                          ),
+                        });
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.Brown}>
+                        Thêm vào giỏ
+                      </Typography.Body1>
+                    </Button>
+                    <Button
+                      variant="filled"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      onClick={() => {
+                        navigate('/product/payment');
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.White}>
+                        Mua ngay
+                      </Typography.Body1>
+                    </Button>
+                  </Flex>
+                )}
+              </Stack>
+              <IconHeart
+                stroke={1}
+                style={{
+                  position: 'absolute',
+                  top: 24,
+                  right: isMobile ? 24 : 48,
+                }}
+              />
             </Space>
           </Grid.Col>
           <Grid.Col span={6}>
@@ -310,17 +423,129 @@ function Cart() {
                 cursor: 'pointer',
               }}
             >
-              <Center>
-                <Image src={image3} />
-                <IconHeart
-                  stroke={1}
-                  style={{
-                    position: 'absolute',
-                    top: 24,
-                    right: 24,
-                  }}
-                />
-              </Center>
+              <Image src={image3} />
+              <Stack
+                p={isMobile ? 12 : 24}
+                style={{
+                  border: '1px solid #CBCBCB',
+                  cursor: 'pointer',
+                }}
+              >
+                <Typography.HeadLine5>
+                  LV ON THE GO PM PREMIUM
+                </Typography.HeadLine5>
+                <Typography.HeadLine4>62.000.000 VND</Typography.HeadLine4>
+                <Typography.Body2>còn hàng 6 sản phẩm</Typography.Body2>
+                <Flex align="center" gap={8}>
+                  <Rating value={5} color={Colors.Brown} />
+                  <Typography.HeadLine5>(12)</Typography.HeadLine5>
+                </Flex>
+                {isMobile ? (
+                  <Stack gap={'sm'}>
+                    <Button
+                      variant="outline"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      p={4}
+                      onClick={() => {
+                        setTotalProduct((prev) =>
+                          prev ? (Number(prev) + 1).toString() : '1'.toString()
+                        );
+                        notifications.show({
+                          icon: (
+                            <IconCheck
+                              style={{ width: rem(20), height: rem(20) }}
+                            />
+                          ),
+                          color: Colors.Brown,
+                          autoClose: 1000,
+                          message: (
+                            <Stack my={16}>
+                              <Typography.HeadLine5>
+                                Sản phẩm đã được thêm vào Giỏ hàng
+                              </Typography.HeadLine5>
+                            </Stack>
+                          ),
+                        });
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.Brown}>
+                        Thêm vào giỏ
+                      </Typography.Body1>
+                    </Button>
+                    <Button
+                      variant="filled"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      p={4}
+                      onClick={() => {
+                        navigate('/product/payment');
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.White}>
+                        Mua ngay
+                      </Typography.Body1>
+                    </Button>
+                  </Stack>
+                ) : (
+                  <Flex gap={24}>
+                    <Button
+                      variant="outline"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      onClick={() => {
+                        setTotalProduct((prev) =>
+                          prev ? (Number(prev) + 1).toString() : '1'.toString()
+                        );
+                        notifications.show({
+                          icon: (
+                            <IconCheck
+                              style={{ width: rem(20), height: rem(20) }}
+                            />
+                          ),
+                          color: Colors.Brown,
+                          autoClose: 1000,
+                          message: (
+                            <Stack my={16}>
+                              <Typography.HeadLine5>
+                                Sản phẩm đã được thêm vào Giỏ hàng
+                              </Typography.HeadLine5>
+                            </Stack>
+                          ),
+                        });
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.Brown}>
+                        Thêm vào giỏ
+                      </Typography.Body1>
+                    </Button>
+                    <Button
+                      variant="filled"
+                      color={Colors.Brown}
+                      radius="xs"
+                      style={{ flex: 1 }}
+                      onClick={() => {
+                        navigate('/product/payment');
+                      }}
+                    >
+                      <Typography.Body1 c={Colors.White}>
+                        Mua ngay
+                      </Typography.Body1>
+                    </Button>
+                  </Flex>
+                )}
+              </Stack>
+              <IconHeart
+                stroke={1}
+                style={{
+                  position: 'absolute',
+                  top: 24,
+                  right: isMobile ? 24 : 48,
+                }}
+              />
             </Space>
           </Grid.Col>
         </Grid>

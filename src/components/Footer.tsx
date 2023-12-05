@@ -50,7 +50,7 @@ function Footer() {
   }
 
   return (
-    <Container fluid py={80} bg={Colors.LightGrey}>
+    <Container fluid py={isMobile ? 40 : 80} bg={Colors.LightGrey}>
       <Container size="xl">
         {isMobile ? (
           <Stack gap={30}>

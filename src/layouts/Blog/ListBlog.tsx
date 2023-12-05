@@ -121,7 +121,7 @@ function ListBlog() {
       <Image src={image1} />
 
       {isMobile && (
-        <Tabs defaultValue="1" mt={24}>
+        <Tabs defaultValue="1" mt={24} color={Colors.Brown}>
           <Tabs.List>
             <Tabs.Tab value="1">Xem tất cả</Tabs.Tab>
             <Tabs.Tab value="2">Bộ sưu tập</Tabs.Tab>

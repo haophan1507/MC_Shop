@@ -95,7 +95,7 @@ function index() {
       </Typography.HeadLine5>
 
       {isMobile && (
-        <Tabs defaultValue="1" mb={24}>
+        <Tabs defaultValue="1" mb={24} color={Colors.Brown}>
           <Tabs.List>
             <Tabs.Tab value="1">Tài khoản</Tabs.Tab>
             <Tabs.Tab value="2">Đơn hàng & Thanh toán</Tabs.Tab>
