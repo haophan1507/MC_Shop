@@ -8,15 +8,12 @@ import {
   Pagination,
   Paper,
   Stack,
-  UnstyledButton,
 } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 import {
   IconSearch,
   IconBellRinging,
   IconAdjustmentsHorizontal,
-  IconCheck,
-  IconX,
   IconMapPin,
   IconPhone,
 } from '@tabler/icons-react';
@@ -318,29 +315,10 @@ function Order() {
                   <Typography.HeadLine5>{item.total}</Typography.HeadLine5>
                 </Flex>
                 <Divider />
-                <Flex justify="space-between">
-                  <Typography.Body2 c={Colors.Grey1}>
+                <Flex justify="center">
+                  <Typography.Body1 c={Colors.Grey1}>
                     {item.amount} sản phẩm
-                  </Typography.Body2>
-                  <Flex gap={16}>
-                    <UnstyledButton
-                      style={{
-                        border: `1px solid ${Colors.LightBrown}`,
-                        padding: 8,
-                      }}
-                    >
-                      <IconX color={Colors.LightBrown} />
-                    </UnstyledButton>
-
-                    <UnstyledButton
-                      style={{
-                        border: `1px solid ${Colors.Brown}`,
-                        padding: 8,
-                      }}
-                    >
-                      <IconCheck color={Colors.Brown} />
-                    </UnstyledButton>
-                  </Flex>
+                  </Typography.Body1>
                 </Flex>
               </Stack>
             </Paper>
