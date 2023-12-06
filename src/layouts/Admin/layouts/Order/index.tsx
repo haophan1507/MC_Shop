@@ -8,6 +8,7 @@ import {
   Pagination,
   Paper,
   Stack,
+  UnstyledButton,
 } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
 import {
@@ -16,6 +17,8 @@ import {
   IconAdjustmentsHorizontal,
   IconMapPin,
   IconPhone,
+  IconCheck,
+  IconX,
 } from '@tabler/icons-react';
 import Colors from '../../../../common/components/Colors';
 import { Typography } from '../../../../common/components/Typography';
@@ -315,11 +318,38 @@ function Order() {
                   <Typography.HeadLine5>{item.total}</Typography.HeadLine5>
                 </Flex>
                 <Divider />
-                <Flex justify="center">
-                  <Typography.Body1 c={Colors.Grey1}>
-                    {item.amount} sản phẩm
-                  </Typography.Body1>
-                </Flex>
+                {status === 1 ? (
+                  <Flex justify="space-between">
+                    <Typography.Body2 c={Colors.Grey1}>
+                      {item.amount} sản phẩm
+                    </Typography.Body2>
+                    <Flex gap={16}>
+                      <UnstyledButton
+                        style={{
+                          border: `1px solid ${Colors.LightBrown}`,
+                          padding: 8,
+                        }}
+                      >
+                        <IconX color={Colors.LightBrown} />
+                      </UnstyledButton>
+
+                      <UnstyledButton
+                        style={{
+                          border: `1px solid ${Colors.Brown}`,
+                          padding: 8,
+                        }}
+                      >
+                        <IconCheck color={Colors.Brown} />
+                      </UnstyledButton>
+                    </Flex>
+                  </Flex>
+                ) : (
+                  <Flex justify="center">
+                    <Typography.Body1 c={Colors.Grey1}>
+                      {item.amount} sản phẩm
+                    </Typography.Body1>
+                  </Flex>
+                )}
               </Stack>
             </Paper>
           </Grid.Col>
