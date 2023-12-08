@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Center,
+  Checkbox,
   Container,
   Divider,
   Flex,
@@ -12,6 +13,7 @@ import {
   Rating,
   Space,
   Stack,
+  UnstyledButton,
   em,
   rem,
 } from '@mantine/core';
@@ -87,8 +89,9 @@ function Cart() {
             </Stack>
           ) : (
             <Flex gap={12} align="center">
+              <Checkbox variant="outline" color={Colors.Brown} />
               <Image src={image2} w={180} />
-              <Stack w={200} gap={12}>
+              <Stack w={200} gap={24}>
                 <Typography.Body1 maw={175}>
                   GUCCI DIANA MEDIUM SHOULDER
                 </Typography.Body1>
@@ -116,6 +119,25 @@ function Cart() {
                       }}
                     />
                   </Box>
+                </Flex>
+                <Flex>
+                  <UnstyledButton>
+                    <Typography.Body2 td="underline">Sửa</Typography.Body2>
+                  </UnstyledButton>
+                  <Divider orientation="vertical" color={Colors.Black} mx={8} />
+                  <UnstyledButton>
+                    <Typography.Body2 td="underline">Xoá</Typography.Body2>
+                  </UnstyledButton>
+                  <Divider orientation="vertical" color={Colors.Black} mx={8} />
+
+                  <Flex align="center" gap={4}>
+                    <IconHeart color={Colors.Grey2} />
+                    <UnstyledButton>
+                      <Typography.Body2 td="underline">
+                        Yêu thích
+                      </Typography.Body2>
+                    </UnstyledButton>
+                  </Flex>
                 </Flex>
               </Stack>
               <Flex align="center" gap={16} w={150}>
@@ -175,8 +197,9 @@ function Cart() {
             </Stack>
           ) : (
             <Flex gap={12} align="center">
+              <Checkbox variant="outline" color={Colors.Brown} />
               <Image src={image3} w={180} />
-              <Stack w={200} gap={12}>
+              <Stack w={200} gap={24}>
                 <Typography.Body1 maw={175}>
                   Speedy Bandoulière 25
                 </Typography.Body1>
@@ -204,6 +227,25 @@ function Cart() {
                       }}
                     />
                   </Box>
+                </Flex>
+                <Flex>
+                  <UnstyledButton>
+                    <Typography.Body2 td="underline">Sửa</Typography.Body2>
+                  </UnstyledButton>
+                  <Divider orientation="vertical" color={Colors.Black} mx={8} />
+                  <UnstyledButton>
+                    <Typography.Body2 td="underline">Xoá</Typography.Body2>
+                  </UnstyledButton>
+                  <Divider orientation="vertical" color={Colors.Black} mx={8} />
+
+                  <Flex align="center" gap={4}>
+                    <IconHeart color={Colors.Grey2} />
+                    <UnstyledButton>
+                      <Typography.Body2 td="underline">
+                        Yêu thích
+                      </Typography.Body2>
+                    </UnstyledButton>
+                  </Flex>
                 </Flex>
               </Stack>
               <Flex align="center" gap={16} w={150}>
